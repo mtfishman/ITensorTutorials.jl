@@ -1,0 +1,13 @@
+name = "ITensorTutorials"
+uuid = "13d4259f-7753-4ddc-ba07-117a7a403d2c"
+authors = ["Matthew Fishman <mfishman@flatironinstitute.org> and contributors"]
+version = "0.0.1"
+
+[compat]
+julia = "1.6"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
