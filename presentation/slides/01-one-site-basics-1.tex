@@ -1,0 +1,20 @@
+\begin{frame}[fragile]{Tutorial: One-site state basics}
+
+\begin{lstlisting}
+
+# Dimension 2 labeled Hilbert space
+i = Index(2)
+
+# Make an "up" state (+1 eigenvalue of `Z`),
+# denoted as `|Z+⟩`.
+
+# Define through setting elements
+Zp = ITensor(i)
+Zp[i => 1] = 1.0
+
+# Alternative syntax, construct from a Vector
+Zp = ITensor([1 0], i)
+
+\end{lstlisting}
+
+\end{frame}

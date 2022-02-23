@@ -1,0 +1,23 @@
+\begin{frame}{When should I use tensor networks?}
+
+\begin{itemize}[<+->]
+
+  \item Many sites or qubits in your system: linear or log scaling in the system size.
+  \item Short time evolution, or very noisy evolution.
+  \item If you need very long time evolution/many layers and few qubits, use full state simultion.
+    
+  \begin{itemize}[<+->]
+
+    \item ITensor and PastaQ handle this seemlessly.
+    \item This is not the focus of ITensor and PastaQ at the moment, specialized libraries like Yao.jl may be faster.
+
+  \end{itemize}
+
+  \item If TNs could do everything, we would not need a quantum computer! But in my opinion, it is the best general purpose tool we have right now.
+  \item Perhaps most importantly, tensor networks are a common, general language for reasoning about quantum many-body systems (for example, quantum circuits).
+
+\end{itemize}
+
+\todo{``Quantum volume'' schematic plot.}
+
+\end{frame}

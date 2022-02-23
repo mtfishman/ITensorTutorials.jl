@@ -11,3 +11,10 @@
 Manifest.toml
 benchmark/*.json
 docs/build/
+*.log
+*.aux
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb

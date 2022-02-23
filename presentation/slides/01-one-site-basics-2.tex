@@ -1,0 +1,20 @@
+\begin{frame}[fragile]{Tutorial: One-site state basics}
+
+\begin{lstlisting}
+
+# Define through setting elements
+Zm = ITensor(i)
+Zm[i => 2] = 1.0
+
+# Alternative syntax, construct from a Vector
+Zm = ITensor([0 1], i)
+
+@visualize Zm
+
+# Can do algebra, inner products, etc:
+@show (Zp + Zm) / √2
+@show dag(Zp) * Zm
+
+\end{lstlisting}
+
+\end{frame}
