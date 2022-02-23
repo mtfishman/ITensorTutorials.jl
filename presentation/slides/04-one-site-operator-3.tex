@@ -1,4 +1,6 @@
-\begin{frame}[fragile]{Tutorial: One-site state basics}
+\begin{frame}[fragile]{Tutorial: One-site operators}
+
+\todo{Add visualization of inner product}
 
 \begin{columns}
 
@@ -7,10 +9,12 @@
 \begin{onlyenv}<1->
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-Zp = ITensor([1 0], i)
-Zm = ITensor([0 1], i)
-Xp = ITensor([1 1]/√2, i) 
-Xm = ITensor([1 -1]/√2, i) 
+XZp = X * Zp
+
+inner(Zm, XZp)
+
+inner(Zm', XZp)
+inner(Zp', XZp)
 \end{lstlisting}
 
 \end{onlyenv}
@@ -18,11 +22,10 @@ Xm = ITensor([1 -1]/√2, i)
 \begin{onlyenv}<2->
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-(Zp + Zm)/√2
-(dag(Zp) * Xp)
-(dag(Zp) * Xp)[]
-inner(Zp, Xp)
-norm(Xp)
+apply(X, Zp) == Zm
+
+(dag(Zm)' * X * Zp)[]
+inner(Zm', X, Zp)
 \end{lstlisting}
 
 \end{onlyenv}
@@ -34,10 +37,12 @@ norm(Xp)
 \begin{onlyenv}<1->
 
 \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# Z|Z+$\rangle$ = |Z+$\rangle$
-# Z|Z-$\rangle$ = -|Z-$\rangle$
-# X|X+$\rangle$ = |X+$\rangle$
-# X|X-$\rangle$ = -|X-$\rangle$
+# X|Z+$\rangle$ = |Z-$\rangle$
+
+# error: not a scalar value
+
+# $\approx$ 1
+# $\approx$ 0
 \end{lstlisting}
 
 \end{onlyenv}
@@ -45,10 +50,9 @@ norm(Xp)
 \begin{onlyenv}<2->
 
 \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# $\approx$ Xp
-# $\approx$ ITensor(1/√2)
-# $\approx$ 1/√2
-# $\approx$ 1/√2
+# false
+
+# $\approx$ 1
 # $\approx$ 1
 \end{lstlisting}
 

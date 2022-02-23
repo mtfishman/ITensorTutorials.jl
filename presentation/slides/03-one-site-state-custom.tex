@@ -1,4 +1,4 @@
-\begin{frame}[fragile]{Tutorial: One-site state basics}
+\begin{frame}[fragile]{Tutorial: Custom one-site states}
 
 \begin{columns}
 
@@ -7,10 +7,15 @@
 \begin{onlyenv}<1->
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-Zp = ITensor([1 0], i)
-Zm = ITensor([0 1], i)
-Xp = ITensor([1 1]/√2, i) 
-Xm = ITensor([1 -1]/√2, i) 
+import ITensors: state
+
+
+function state(
+  ::StateName"iX-",
+  ::SiteType"S=1/2"
+)
+  return [im -im]/√2
+end
 \end{lstlisting}
 
 \end{onlyenv}
@@ -18,11 +23,10 @@ Xm = ITensor([1 -1]/√2, i)
 \begin{onlyenv}<2->
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-(Zp + Zm)/√2
-(dag(Zp) * Xp)
-(dag(Zp) * Xp)[]
-inner(Zp, Xp)
-norm(Xp)
+iXm = state("iX-", i)
+
+inner(Zp, iXm)
+inner(Zm, iXm)
 \end{lstlisting}
 
 \end{onlyenv}
@@ -34,22 +38,25 @@ norm(Xp)
 \begin{onlyenv}<1->
 
 \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# Z|Z+$\rangle$ = |Z+$\rangle$
-# Z|Z-$\rangle$ = -|Z-$\rangle$
-# X|X+$\rangle$ = |X+$\rangle$
-# X|X-$\rangle$ = -|X-$\rangle$
-\end{lstlisting}
+# Overload ITensors.jl
+# behavior
+
+# Define a state with the
+# name ``iX-''
+
+
+
+ \end{lstlisting}
 
 \end{onlyenv}
 
 \begin{onlyenv}<2->
 
 \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# $\approx$ Xp
-# $\approx$ ITensor(1/√2)
-# $\approx$ 1/√2
-# $\approx$ 1/√2
-# $\approx$ 1
+# $\approx$ im * Xm
+
+# $\approx$ im/√2
+# $\approx$ -im/√2
 \end{lstlisting}
 
 \end{onlyenv}

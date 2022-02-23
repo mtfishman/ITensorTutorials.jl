@@ -1,4 +1,4 @@
-\begin{frame}[fragile]{Tutorial: One-site state basics}
+\begin{frame}[fragile]{Tutorial: Two-site states}
 
 \begin{columns}
 
@@ -7,10 +7,13 @@
 \begin{onlyenv}<1->
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-Zp = ITensor([1 0], i)
-Zm = ITensor([0 1], i)
-Xp = ITensor([1 1]/√2, i) 
-Xm = ITensor([1 -1]/√2, i) 
+i1 = Index(2, "S=1/2")
+i2 = Index(2, "S=1/2")
+
+i1 == i2
+
+ZpZm = ITensor(i1, i2)
+ZpZm[i1=>1, i2=>2] = 1
 \end{lstlisting}
 
 \end{onlyenv}
@@ -18,38 +21,46 @@ Xm = ITensor([1 -1]/√2, i)
 \begin{onlyenv}<2->
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-(Zp + Zm)/√2
-(dag(Zp) * Xp)
-(dag(Zp) * Xp)[]
-inner(Zp, Xp)
-norm(Xp)
+Zp1 = state("Z+", i1)
+Zp2 = state("Z+", i2)
+
+Zm1 = state("Z-", i1)
+Zm2 = state("Z-", i2)
+
+ZpZm = Zp1 * Zm2
+ZmZp = Zm1 * Zp2
 \end{lstlisting}
 
 \end{onlyenv}
 
 \end{column}
 
-\begin{column}{4.5cm}
+\begin{column}{5cm}
 
 \begin{onlyenv}<1->
 
 \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# Z|Z+$\rangle$ = |Z+$\rangle$
-# Z|Z-$\rangle$ = -|Z-$\rangle$
-# X|X+$\rangle$ = |X+$\rangle$
-# X|X-$\rangle$ = -|X-$\rangle$
-\end{lstlisting}
+# (dim=2|id=505|``S=1/2'')
+# (dim=2|id=576|``S=1/2'')
+ 
+# false
+
+# |Z+$\rangle_1$|Z-$\rangle_2$ = |Z+Z-$\rangle$
+ \end{lstlisting}
 
 \end{onlyenv}
 
 \begin{onlyenv}<2->
 
 \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# $\approx$ Xp
-# $\approx$ ITensor(1/√2)
-# $\approx$ 1/√2
-# $\approx$ 1/√2
-# $\approx$ 1
+# |Z+$\rangle_1$
+# |Z+$\rangle_2$
+
+# |Z-$\rangle_1$
+# |Z-$\rangle_2$
+
+# |Z+Z-$\rangle$ = |Z+$\rangle_1$|Z-$\rangle_2$
+# |Z-Z+$\rangle$ = |Z-$\rangle_1$|Z+$\rangle_2$
 \end{lstlisting}
 
 \end{onlyenv}

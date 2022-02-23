@@ -1,4 +1,4 @@
-\begin{frame}[fragile]{Tutorial: One-site state basics}
+\begin{frame}[fragile]{Tutorial: One-site operators}
 
 \begin{columns}
 
@@ -7,10 +7,11 @@
 \begin{onlyenv}<1->
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-Zp = ITensor([1 0], i)
-Zm = ITensor([0 1], i)
-Xp = ITensor([1 1]/√2, i) 
-Xm = ITensor([1 -1]/√2, i) 
+Z = op("Z", i)
+X = op("X", i)
+
+Zp = state("Z+", i)
+Zm = state("Z-", i)
 \end{lstlisting}
 
 \end{onlyenv}
@@ -18,11 +19,10 @@ Xm = ITensor([1 -1]/√2, i)
 \begin{onlyenv}<2->
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-(Zp + Zm)/√2
-(dag(Zp) * Xp)
-(dag(Zp) * Xp)[]
-inner(Zp, Xp)
-norm(Xp)
+XZp = X * Zp
+XZp == Zm
+XZp == Zm'
+noprime(XZp) == Zm
 \end{lstlisting}
 
 \end{onlyenv}
@@ -34,10 +34,11 @@ norm(Xp)
 \begin{onlyenv}<1->
 
 \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# Z|Z+$\rangle$ = |Z+$\rangle$
-# Z|Z-$\rangle$ = -|Z-$\rangle$
-# X|X+$\rangle$ = |X+$\rangle$
-# X|X-$\rangle$ = -|X-$\rangle$
+# Z
+# X
+
+# |Z+$\rangle$
+# |Z-$\rangle$
 \end{lstlisting}
 
 \end{onlyenv}
@@ -45,11 +46,10 @@ norm(Xp)
 \begin{onlyenv}<2->
 
 \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# $\approx$ Xp
-# $\approx$ ITensor(1/√2)
-# $\approx$ 1/√2
-# $\approx$ 1/√2
-# $\approx$ 1
+# X|Z+$\rangle$ = |Z-$\rangle$
+# false
+# true
+# true
 \end{lstlisting}
 
 \end{onlyenv}
