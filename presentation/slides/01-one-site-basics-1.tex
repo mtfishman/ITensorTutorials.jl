@@ -6,12 +6,12 @@
 
 \begin{onlyenv}<1->
 
-  \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-  using ITensors
+\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
+using ITensors
 
-  i = Index(2)
+i = Index(2)
 
-  \end{lstlisting}
+ \end{lstlisting}
 
 \end{onlyenv}
 
@@ -19,7 +19,7 @@
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
 Zp = ITensor(i)
-Zp[i => 1] = 1
+Zp[i=>1] = 1
 
 Zp = ITensor([1 0], i)
 \end{lstlisting}
@@ -48,7 +48,7 @@ Zp = ITensor([1 0], i)
 # Z|Z+$\rangle$ = |Z+$\rangle$
 
 
-# Alternative syntax
+# Construct from a Vector
 \end{lstlisting}
 
 \end{onlyenv}
