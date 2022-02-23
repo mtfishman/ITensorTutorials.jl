@@ -1,27 +1,31 @@
 \begin{frame}[fragile]{Tutorial: One-site state basics}
 
+\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
+using ITensorVisualizationBase: set_backend!
+\end{lstlisting}
+
 \begin{columns}
 
 \begin{column}{4.5cm}
 
-\begin{onlyenv}<1->
+\begin{onlyenv}<2->
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-Zm = ITensor([0 1], i)
-Xp = ITensor([1 1]/√2, i) 
-Xm = ITensor([1 -1]/√2, i) 
+back = "UnicodePlots"
+set_backend!(back)
+
+@visualize dag(Zp) * Xp
 \end{lstlisting}
 
 \end{onlyenv}
 
-\begin{onlyenv}<2->
+\begin{onlyenv}<3->
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-(Zp + Zm)/√2
-(dag(Zp) * Xp)
-(dag(Zp) * Xp)[]
-inner(Zp, Xp)
-norm(Xp)
+back = "Makie"
+set_backend!(back)
+
+@visualize dag(Zp) * Xp
 \end{lstlisting}
 
 \end{onlyenv}
@@ -30,25 +34,17 @@ norm(Xp)
 
 \begin{column}{4.5cm}
 
-\begin{onlyenv}<1->
+\begin{onlyenv}<2->
 
 \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# Z|Z-$\rangle$ = -|Z-$\rangle$
-# X|X+$\rangle$ = |X+$\rangle$
-# X|X-$\rangle$ = -|X-$\rangle$
+# TODO: Add UnicodePlots visualization.
 \end{lstlisting}
 
 \end{onlyenv}
 
-\begin{onlyenv}<2->
+\begin{onlyenv}<3->
 
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# ≈ Xp
-# ≈ ITensor(1/√2)
-# ≈ 1/√2
-# ≈ 1/√2
-# ≈ 1
-\end{lstlisting}
+\todo{Add GLMakie visualization.}
 
 \end{onlyenv}
 

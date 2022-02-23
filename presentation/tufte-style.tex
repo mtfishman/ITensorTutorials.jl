@@ -14,7 +14,19 @@
 \usepackage[utf8]{inputenc}
 \usetheme{default}
 
-\usepackage{listings} % For code formatting
+% For code formatting
+\usepackage{listings}
+
+% For Julia code formatting
+% https://github.com/mossr/julia-mono-listings
+\input{julia_font}
+\input{julia_listings}
+
+\lstdefinelanguage{JuliaLocal}{
+  language = Julia, % inherit Julia lang. to add keywords
+  morekeywords = [3]{inner, @visualize}, % define more functions
+  morekeywords = [2]{ITensors, Index, ITensor}, % define more types and modules
+}
 
 \newcommand{\todo}[1]{{\color{red}[TODO: #1]}}
 
@@ -54,6 +66,7 @@
 \include{slides/install-itensor}
 \include{slides/01-one-site-basics-1}
 \include{slides/01-one-site-basics-2}
+\include{slides/01-one-site-basics-3}
 \include{slides/future-directions}
 
 \end{document}

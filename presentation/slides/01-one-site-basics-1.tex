@@ -1,20 +1,60 @@
 \begin{frame}[fragile]{Tutorial: One-site state basics}
 
-\begin{lstlisting}
+\begin{columns}
 
-# Dimension 2 labeled Hilbert space
-i = Index(2)
+\begin{column}{4.5cm}
 
-# Make an "up" state (+1 eigenvalue of `Z`),
-# denoted as `|Z+⟩`.
+\begin{onlyenv}<1->
 
-# Define through setting elements
+  \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
+  using ITensors
+
+  i = Index(2)
+
+  \end{lstlisting}
+
+\end{onlyenv}
+
+\begin{onlyenv}<2->
+
+\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
 Zp = ITensor(i)
-Zp[i => 1] = 1.0
+Zp[i => 1] = 1
 
-# Alternative syntax, construct from a Vector
 Zp = ITensor([1 0], i)
-
 \end{lstlisting}
+
+\end{onlyenv}
+
+\end{column}
+
+\begin{column}{4.5cm}
+
+\begin{onlyenv}<1->
+
+\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+# Load ITensor
+
+# 2-dimensional labeled
+# Hilbert space
+# (dim=2|id=510)
+\end{lstlisting}
+
+\end{onlyenv}
+
+\begin{onlyenv}<2->
+
+\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+# Z|Z+$\rangle$ = |Z+$\rangle$
+
+
+# Alternative syntax
+\end{lstlisting}
+
+\end{onlyenv}
+
+\end{column}
+
+\end{columns}
 
 \end{frame}
