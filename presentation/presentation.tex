@@ -24,8 +24,8 @@
 
 \lstdefinelanguage{JuliaLocal}{
   language = Julia, % inherit Julia lang. to add keywords
-  morekeywords = [3]{@visualize, inner, prime, noprime, apply, dag, op, E, F, gradient, minimize, norm}, % define more functions
-  morekeywords = [2]{ITensors, Index, ITensor}, % define more types and modules
+  morekeywords = [3]{@visualize, inner, prime, noprime, apply, dag, op, E, F, gradient, minimize, norm, maxlinkdim, state, set_backend!, ising_mpo}, % define more functions
+  morekeywords = [2]{ITensors, ITensorVisualizationBase, Index, ITensor, MPS, MPO, OpSum, StateName, OpName, SiteType}, % define more types and modules
 }
 
 \newcommand{\myhref}[3][blue]{\href{#2}{\color{#1}{#3}}}%
@@ -112,6 +112,9 @@
 \include{slides/10-two-site-circuit-optimization-1}
 \include{slides/10-two-site-circuit-optimization-2}
 \include{slides/11-two-site-fidelity-optimization}
+\include{slides/12-n-site-mps-1}
+\include{slides/12-n-site-mps-2}
+\include{slides/12-n-site-mps-3}
 \include{slides/future-directions}
 
 \end{document}

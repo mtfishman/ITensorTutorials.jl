@@ -4,7 +4,7 @@
 
 \begin{columns}
 
-\begin{column}{5cm}
+\begin{column}{4.5cm}
 
 \begin{onlyenv}<1->
 
@@ -37,15 +37,16 @@ H = -XX + h * (ZI + IZ)
 
 \end{column}
 
-\begin{column}{5cm}
+\begin{column}{5.5cm}
 
 \begin{onlyenv}<1->
 
 \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
 # Make a Hamiltonian:
 # Transverse field Ising
-# $H = -\sum_i X_i X_{i+1} + h \sum_i Z_i$
- \end{lstlisting}
+# n=2 sites
+# $H = -\sum_j^{n-1} X_j X_{j+1} + h \sum_j^n Z_j$
+\end{lstlisting}
 
 \end{onlyenv}
 

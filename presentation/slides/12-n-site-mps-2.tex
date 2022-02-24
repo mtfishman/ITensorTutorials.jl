@@ -1,0 +1,68 @@
+\begin{frame}[fragile]{Tutorial: n-site states with MPS}
+
+\todo{Add visualization of minimizing <psi|H|psi>}
+
+\begin{columns}
+
+\begin{column}{6cm}
+
+\begin{onlyenv}<1->
+
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+  j = n ÷ 2
+  X$_j$ = op("X", i[j])
+
+  X$_j$Zp = apply(X$_j$, Zp)
+
+
+  state = [k == j ? "Z-" : "Z+"
+             for k in 1:n]
+  X$_j$Zp = MPS(i, state)
+\end{lstlisting}
+
+\end{onlyenv}
+
+\begin{onlyenv}<2->
+
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+  maxlinkdim(X$_j$Zp)
+  inner(Zp, X$_j$Zp)
+  inner(X$_j$Zp, apply(X$_j$, Zp))
+\end{lstlisting}
+
+\end{onlyenv}
+
+\end{column}
+
+\begin{column}{4cm}
+
+\begin{onlyenv}<1->
+
+\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+# j = n ÷ 2
+# X$_j$
+
+# X$_j$|Z+Z+…Z+$\rangle$ =
+#     |Z+Z+…Z-…Z+$\rangle$
+
+# |Z+Z+…Z-…Z+$\rangle$
+
+ \end{lstlisting}
+
+\end{onlyenv}
+
+\begin{onlyenv}<2->
+
+\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+# 1
+# $\approx$ 0
+# $\approx$ 1
+\end{lstlisting}
+
+\end{onlyenv}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}

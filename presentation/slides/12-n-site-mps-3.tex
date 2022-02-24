@@ -1,0 +1,75 @@
+\begin{frame}[fragile]{Tutorial: n-site states with MPS}
+
+\todo{Add visualization of minimizing <psi|H|psi>}
+
+\begin{columns}
+
+\begin{column}{5cm}
+
+\begin{onlyenv}<1->
+
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+function ising(n; h)
+  H = OpSum()
+  for j in 1:(n - 1)
+    H -= "Z", j, "Z", j + 1
+  end
+  for j in 1:n
+    H += h, "X", j
+  end
+  return H
+end
+\end{lstlisting}
+
+\end{onlyenv}
+
+\begin{onlyenv}<2->
+
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+h = 0.5
+H = MPO(ising(n; h=h), i)
+maxlinkdim(H)
+Zp = MPS(i, "Z+")
+inner(Zp', H, Zp)
+ \end{lstlisting}
+
+\end{onlyenv}
+
+\end{column}
+
+\begin{column}{5.5cm}
+
+\begin{onlyenv}<1->
+
+\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+# n sites
+# $H = -\sum_j^{n-1} Z_j Z_{j+1} + h \sum_j^n X_j$
+
+
+
+
+
+
+
+ \end{lstlisting}
+
+\end{onlyenv}
+
+\begin{onlyenv}<2->
+
+\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+
+
+# = 3
+
+# $\langle$Z+Z+…Z+|H|Z+Z+…Z+$\rangle$ $\approx$
+#   -(n - 1) = -29
+\end{lstlisting}
+
+\end{onlyenv}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}
