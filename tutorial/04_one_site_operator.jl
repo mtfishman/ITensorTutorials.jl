@@ -56,6 +56,7 @@ XZp = X * Zp
 # of the input vector.
 XZp = X * Zp
 
+
 # Take an inner product?
 # dag(Zm) * XZp
 # No, outer product!

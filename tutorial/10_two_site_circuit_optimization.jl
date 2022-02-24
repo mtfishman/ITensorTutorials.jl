@@ -13,10 +13,10 @@ println("
 # Bonus: this is a Matchgate, we could do this
 # with free fermions (correlation matrix formalism)
 function op(::OpName"U", ::SiteType"S=1/2"; θ1, θ2)
-  c1 = cos(θ1)
-  s1 = sin(θ1)
-  c2 = cos(θ2)
-  s2 = sin(θ2)
+  c1 = cos(θ1/2)
+  s1 = sin(θ1/2)
+  c2 = cos(θ2/2)
+  s2 = sin(θ2/2)
   return [
     c1  0   0 -s1
     0  c2 -s2   0
@@ -26,30 +26,32 @@ function op(::OpName"U", ::SiteType"S=1/2"; θ1, θ2)
 end
 
 # References state `|0⟩ = |Z+Z+⟩`
-v0 = Zp1 * Zp2
+ψ⁰ = Zp1 * Zp2
 
 # Find `U(θ)` that minimizes
 #
 # energy_circuit(θ) = ⟨0|U(θ)† H U(θ)|0⟩ = ⟨θ|H|θ⟩
-function energy_circuit(θ)
+function E(θ)
   # Circuit: for now just a single gate:
   # U(θ)
   θ1, θ2 = θ
-  U_θ = op("U", i1, i2; θ1=θ1, θ2=θ2)
+  Uᶿ = op("U", i1, i2; θ1=θ1, θ2=θ2)
 
   # Apply the gate to the circuit:
   # |θ⟩ = U(θ)|0⟩
   #
-  # Same as `noprime(U_θ * v0)`:
-  vθ = apply(U_θ, v0)
+  # Same as `noprime(Uᶿ * ψ0)`:
+  ψᶿ = apply(Uᶿ, ψ⁰)
 
   # Compute the expecation value: ⟨θ|H|θ⟩
   # No need to normalize!
-  return inner(vθ', H, vθ)
+  return inner(ψᶿ', H, ψᶿ)
 end
 
 println("Circuit optimization")
-θ1, θ2 = randn(), randn()
-θ_min = minimize(energy_circuit, [θ1, θ2]; nsteps=10, γ=0.1)
+θ⁰ = [π/2, 0]
+∂E(ψ) = gradient(E, ψ)[1]
+θ = minimize(E, ∂E, θ⁰; nsteps=30, γ=0.1)
 
-@show θ_min
+@show θ⁰, E(θ⁰), norm(∂E(θ⁰))
+@show θ, E(θ), norm(∂E(θ))

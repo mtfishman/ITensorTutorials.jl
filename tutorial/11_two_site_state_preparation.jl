@@ -21,8 +21,8 @@ x = (ZpZp + ZmZm) / √2
 
 # Find `U(θ)` that minimizes
 #
-# state_preparation(θ) = -|⟨x|U(θ)|0⟩|² = -|⟨x|θ⟩|²
-function state_preparation(θ)
+# F(θ) = -|⟨x|U(θ)|0⟩|² = -|⟨x|θ⟩|²
+function F(θ)
   # Circuit (single gate)
   θ1, θ2 = θ
   U_θ = op("U", i1, i2; θ1=θ1, θ2=θ2)
@@ -38,7 +38,10 @@ function state_preparation(θ)
 end
 
 println("Circuit optimization")
-θ1, θ2 = 0, 0
-θ_min = minimize(state_preparation, [θ1, θ2]; nsteps=20, γ=0.1)
+θ⁰ = [0, 0]
+∂F(θ) = gradient(F, θ)[1]
+θ = minimize(F, ∂F, θ⁰; nsteps=50, γ=0.1)
 
-@show θ_min, [π/4, 0]
+@show θ, [π/4, 0]
+@show F(θ⁰), norm(∂F(θ⁰))
+@show F(θ), norm(∂F(θ))
