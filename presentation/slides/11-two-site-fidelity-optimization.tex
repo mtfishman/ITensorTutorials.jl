@@ -1,0 +1,76 @@
+\begin{frame}[fragile]{Tutorial: Two-site fidelity optimization}
+
+\todo{Add visualization of minimizing <v|U|v0>}
+
+\begin{columns}
+
+\begin{column}{5cm}
+
+\begin{onlyenv}<1->
+
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+$\psi_0$ = Zp1 * Zp2
+$\psi$ = (ZpZp + ZmZm) / √2
+
+function F($\theta$)
+  $\theta$1, $\theta$2 = $\theta$
+  U$_\theta$ = op("U", i1, i2;
+              $\theta$1=$\theta$1, $\theta$2=$\theta$2)
+  $\psi_\theta$ = apply(U$_\theta$, $\psi_0$)
+  return -abs(inner($\psi$, $\psi_\theta$))
+end
+\end{lstlisting}
+
+\end{onlyenv}
+
+\begin{onlyenv}<2->
+
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+$\theta_0$ = [0, 0]
+$\theta$ = minimize(F, $\partial$F, $\theta_0$;
+        nsteps=50, $\gamma$=0.1)
+
+F($\theta_0$), norm($\partial$F($\theta_0$))
+F($\theta$), norm($\partial$F($\theta$))
+\end{lstlisting}
+
+\end{onlyenv}
+
+\end{column}
+
+\begin{column}{5cm}
+
+\begin{onlyenv}<1->
+
+\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+# Reference state:
+# |0$\rangle$ = |Z+Z+$\rangle$
+
+# Target state:
+# |$\psi\rangle$ = (|Z+Z+$\rangle$ +
+#           |Z-Z-$\rangle$)/√2
+
+# Find U($\theta$) that minimizes
+#
+# F($\theta$) = -|$\langle\psi$|U($\theta$)|0$\rangle$|
+\end{lstlisting}
+
+\end{onlyenv}
+
+\begin{onlyenv}<2->
+
+\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+# F($\theta_0$), norm($\partial$F($\theta_0$)) =
+#   (-0.5, 0.5)
+
+# F($\theta$), norm($\partial$F($\theta$)) =
+#   (-0.9938992, 0.07786879)
+ \end{lstlisting}
+
+\end{onlyenv}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}

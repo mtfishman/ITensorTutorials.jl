@@ -1,0 +1,72 @@
+\begin{frame}[fragile]{Tutorial: Two-site states}
+
+\todo{Add visualization of inner(Cat, Cat), SVD}
+
+\begin{columns}
+
+\begin{column}{5cm}
+
+\begin{onlyenv}<1->
+
+\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
+Cat = ITensor(i1, i2)
+Cat[i1=>1, i2=>2] = 1/√2
+Cat[i1=>2, i2=>1] = 1/√2
+
+Cat = (Zp1 * Zm2 +
+          Zm1 * Zp2)/√2
+\end{lstlisting}
+
+\end{onlyenv}
+
+\begin{onlyenv}<2->
+
+\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
+inner(Cat, Cat)
+inner(ZpZm, Cat)
+
+U, S, V = svd(ZmZp, i1)
+s = diag(S)
+
+U, S, V = svd(Cat, i1)
+s = diag(S)
+\end{lstlisting}
+
+\end{onlyenv}
+
+\end{column}
+
+\begin{column}{5cm}
+
+\begin{onlyenv}<1->
+
+\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+# (|Z+$\rangle$|Z-$\rangle$ + |Z-$\rangle$|Z+$\rangle$)/√2
+
+
+
+# From single-site states
+ \end{lstlisting}
+
+\end{onlyenv}
+
+\begin{onlyenv}<2->
+
+\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+# $\approx$ 1
+# $\approx$ 1/√2
+
+
+# $\approx$ [1 0]
+
+
+# $\approx$ [1/√2 1/√2]
+\end{lstlisting}
+
+\end{onlyenv}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}

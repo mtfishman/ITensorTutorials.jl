@@ -1,0 +1,74 @@
+\begin{frame}[fragile]{Tutorial: Custom two-site operators}
+
+\begin{columns}
+
+\begin{column}{5cm}
+
+\begin{onlyenv}<1->
+
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+import ITensors: op
+
+function op(
+  ::OpName"CRy",
+  ::SiteType"S=1/2";
+  $\theta$
+)
+  c = cos($\theta$/2)
+  s = sin($\theta$/2)
+  return [
+    1 0 0  0
+    0 1 0  0
+    0 0 c -s
+    0 0 s  c
+  ]
+end
+\end{lstlisting}
+
+\end{onlyenv}
+
+%% \begin{onlyenv}<2->
+%% 
+%% \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
+%% \end{lstlisting}
+%% 
+%% \end{onlyenv}
+
+\end{column}
+
+\begin{column}{5cm}
+
+\begin{onlyenv}<1->
+
+\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+# Controlled-Ry (CRy)
+# rotation gate
+
+# CRy($\theta$)
+
+
+
+
+
+
+
+
+
+
+
+ \end{lstlisting}
+
+\end{onlyenv}
+
+%% \begin{onlyenv}<2->
+%% 
+%% \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+%% \end{lstlisting}
+%% 
+%% \end{onlyenv}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}

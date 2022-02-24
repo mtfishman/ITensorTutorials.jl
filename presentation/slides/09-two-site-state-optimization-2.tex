@@ -1,0 +1,71 @@
+\begin{frame}[fragile]{Tutorial: Two-site state optimization}
+
+\todo{Add visualization of minimizing <v|H|v>}
+
+\begin{columns}
+
+\begin{column}{5cm}
+
+\begin{onlyenv}<1->
+
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+using Zygote
+
+$\partial$E($\psi$) = gradient(E, $\psi$)[1]
+
+$\psi_0$ = (Zp1 * Zm2 +
+         Zm1 * Zp2)/√2
+ \end{lstlisting}
+
+\end{onlyenv}
+
+\begin{onlyenv}<2->
+
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+$\psi$ = minimize(E, $\partial$E, $\psi_0$;
+       nsteps=10, $\gamma$=0.1)
+
+
+E($\psi_0$), norm($\partial$E($\psi_0$))
+E($\psi$), norm($\partial$E($\psi$))
+ \end{lstlisting}
+
+\end{onlyenv}
+
+\end{column}
+
+\begin{column}{5cm}
+
+\begin{onlyenv}<1->
+
+\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+# Using Zygote for automatic
+# differentation of the energy.
+#
+# Starting state:
+#
+# |$\psi_0\rangle$ = (|Z+Z+$\rangle$ +
+#            |Z-Z-$\rangle$)/√2
+\end{lstlisting}
+
+\end{onlyenv}
+
+\begin{onlyenv}<2->
+
+\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+# Minimize:
+#
+# E($\psi$) = $\langle\psi$|H|$\psi\rangle$/$\langle\psi$|$\psi\rangle$
+#
+# (-1, 4)
+# (-2.236068, 4.2766287e-6)
+# $\approx$ (-√5, 0)
+\end{lstlisting}
+
+\end{onlyenv}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}

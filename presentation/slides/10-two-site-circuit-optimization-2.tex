@@ -1,0 +1,73 @@
+\begin{frame}[fragile]{Tutorial: Two-site circuit optimization}
+
+\todo{Add visualization of minimizing <0|UHU|0>}
+
+\begin{columns}
+
+\begin{column}{5cm}
+
+\begin{onlyenv}<1->
+
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+$\psi_0$ = Zp1 * Zp2
+
+function E($\theta$)
+  $\theta$1, $\theta$2 = $\theta$
+  U$_\theta$ = op("U", i1, i2;
+              $\theta$1=$\theta$1, $\theta$2=$\theta$2)
+  $\psi_\theta$ = apply(U$_\theta$, $\psi_0$)
+  return inner($\psi_\theta$', H, $\psi_\theta$)
+end
+\end{lstlisting}
+
+\end{onlyenv}
+
+\begin{onlyenv}<2->
+
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+$\theta_0$ = [$\pi$/2, 0]
+$\theta$ = minimize(E, $\partial$E, $\theta_0$;
+        nsteps=30, $\gamma$=0.1)
+
+E($\theta_0$), norm($\partial$E($\theta_0$))
+E($\theta$), norm($\partial$E($\theta$))
+\end{lstlisting}
+
+\end{onlyenv}
+
+\end{column}
+
+\begin{column}{5cm}
+
+\begin{onlyenv}<1->
+
+\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+# References state:
+# |0$\rangle$ = |Z+Z+$\rangle$
+
+# Find U($\theta$) that minimizes
+#
+# E($\theta$) = $\langle$0|U($\theta$)$^\dagger$ H U($\theta$)|0$\rangle$
+#        = $\langle\theta$|H|$\theta\rangle$
+
+ \end{lstlisting}
+
+\end{onlyenv}
+
+\begin{onlyenv}<2->
+
+\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+# E($\theta_0$), norm($\partial$E($\theta_0$)) =
+#   (-1, 2)
+
+# E($\theta$), norm($\partial$E($\theta$)) =
+#   (-2.2360675, 0.0014603)
+ \end{lstlisting}
+
+\end{onlyenv}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}

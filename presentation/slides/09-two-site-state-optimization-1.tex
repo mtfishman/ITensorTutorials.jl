@@ -1,0 +1,69 @@
+\begin{frame}[fragile]{Tutorial: Two-site state optimization}
+
+\todo{Add visualization of minimizing <v|H|v>}
+
+\begin{columns}
+
+\begin{column}{5cm}
+
+\begin{onlyenv}<1->
+
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+function E($\psi$)
+  $\psi$H$\psi$ = inner($\psi$', H, $\psi$)
+  $\psi$$\psi$ = inner($\psi$, $\psi$)
+  return $\psi$H$\psi$ / $\psi$$\psi$
+end
+\end{lstlisting}
+
+\end{onlyenv}
+
+\begin{onlyenv}<2->
+
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+function minimize(f, ∂f, x;
+  nsteps, $\gamma$)
+  for n in 1:nsteps
+    x = x - $\gamma$ * ∂f(x)
+  end
+  return x
+end
+\end{lstlisting}
+
+\end{onlyenv}
+
+\end{column}
+
+\begin{column}{5cm}
+
+\begin{onlyenv}<1->
+
+\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+# Function to minimize:
+# Expectation value of the
+# energy.
+#
+# E($\psi$) = $\langle$$\psi$|H|$\psi$$\rangle$/$\langle$$\psi$|$\psi$$\rangle$
+\end{lstlisting}
+
+\end{onlyenv}
+
+\begin{onlyenv}<2->
+
+\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+# Simple gradient descent.
+# Must provide function f(x)
+# to minimize and $\partial$f(x),
+# the gradient of f at x.
+
+# $\gamma$ is the gradient
+# descent step size.
+\end{lstlisting}
+
+\end{onlyenv}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}

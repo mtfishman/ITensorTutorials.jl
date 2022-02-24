@@ -1,0 +1,74 @@
+\begin{frame}[fragile]{Tutorial: Two-site circuit optimization}
+
+\begin{columns}
+
+\begin{column}{5cm}
+
+\begin{onlyenv}<1->
+
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+function op(
+  ::OpName"U",
+  ::SiteType"S=1/2";
+  $\theta$1, $\theta$2
+)
+  c1 = cos($\theta$1/2)
+  s1 = sin($\theta$1/2)
+  c2 = cos($\theta$2/2)
+  s2 = sin($\theta$2/2)
+  return [
+    c1  0   0 -s1
+    0  c2 -s2   0
+    0  s2  c2   0
+    s1  0   0  c1
+  ]
+end
+\end{lstlisting}
+
+\end{onlyenv}
+
+%% \begin{onlyenv}<2->
+%% 
+%% \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+%% \end{lstlisting}
+%% 
+%% \end{onlyenv}
+
+\end{column}
+
+\begin{column}{5cm}
+
+\begin{onlyenv}<1->
+
+\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+# Circuit optimization.
+#
+# Note: This is a Matchgate.
+# We could do this
+# with free fermions.
+
+
+
+
+
+
+
+
+
+
+ \end{lstlisting}
+
+\end{onlyenv}
+
+%% \begin{onlyenv}<2->
+%% 
+%% \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+%% \end{lstlisting}
+%% 
+%% \end{onlyenv}
+
+\end{column}
+
+\end{columns}
+
+\end{frame}

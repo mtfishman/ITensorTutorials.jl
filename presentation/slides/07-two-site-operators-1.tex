@@ -1,15 +1,18 @@
-\begin{frame}[fragile]{Tutorial: One-site operators}
+\begin{frame}[fragile]{Tutorial: Two-site operators}
+
+\todo{Add visualization of H}
 
 \begin{columns}
 
-\begin{column}{4.5cm}
+\begin{column}{5cm}
 
 \begin{onlyenv}<1->
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-Z = ITensor(i', i)
-Z[i'=>1, i=>1] = 1
-Z[i'=>2, i=>2] = -1
+H = ITensor(i1', i2', i1, i2)
+H[i1'=>2, i2'=>1,
+   i1=>2, i2=>1] = -1
+# …
 \end{lstlisting}
 
 \end{onlyenv}
@@ -17,26 +20,31 @@ Z[i'=>2, i=>2] = -1
 \begin{onlyenv}<2->
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-z = [
-  1 0
-  0 -1
-]
-Z = ITensor(z, i', dag(i))
+Id1 = op("Id", i1)
+X1 = op("X", i1)
+Z1 = op("Z", i1)
+# …
 
-Z = op("Z", i)
+XX = X1 * X2
+ZI = Z1 * Id2
+IZ = Id1 * Z2
+
+h = 1.0
+H = -XX + h * (ZI + IZ)
 \end{lstlisting}
 
 \end{onlyenv}
 
 \end{column}
 
-\begin{column}{4.5cm}
+\begin{column}{5cm}
 
 \begin{onlyenv}<1->
 
 \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# TODO: Diagram
-# Set elements
+# Make a Hamiltonian:
+# Transverse field Ising
+# $H = -\sum_i X_i X_{i+1} + h \sum_i Z_i$
  \end{lstlisting}
 
 \end{onlyenv}
@@ -44,14 +52,17 @@ Z = op("Z", i)
 \begin{onlyenv}<2->
 
 \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# From matrix
+# Alternative:
+# Build from single-site
+# operators.
+# Less error-prone.
 
 
 
 
 
-# Use predefined definition
-\end{lstlisting}
+
+ \end{lstlisting}
 
 \end{onlyenv}
 

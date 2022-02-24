@@ -24,7 +24,7 @@
 
 \lstdefinelanguage{JuliaLocal}{
   language = Julia, % inherit Julia lang. to add keywords
-  morekeywords = [3]{@visualize, inner, prime, noprime, apply, dag}, % define more functions
+  morekeywords = [3]{@visualize, inner, prime, noprime, apply, dag, op, E, F, gradient, minimize, norm}, % define more functions
   morekeywords = [2]{ITensors, Index, ITensor}, % define more types and modules
 }
 
@@ -68,13 +68,23 @@
 \include{slides/01-one-site-basics-2}
 \include{slides/01-one-site-basics-3}
 \include{slides/02-one-site-states}
-\include{slides/03-one-site-state-custom}
-\include{slides/aside-priming}
-\include{slides/04-one-site-operator-1}
-\include{slides/04-one-site-operator-2}
-\include{slides/04-one-site-operator-3}
-\include{slides/05-one-site-operator-custom}
-\include{slides/06-two-site-states}
+\include{slides/03-one-site-states-custom}
+\include{slides/04-priming}
+\include{slides/04-one-site-operators-1}
+\include{slides/04-one-site-operators-2}
+\include{slides/04-one-site-operators-3}
+\include{slides/05-one-site-operators-custom}
+\include{slides/06-two-site-states-1}
+\include{slides/06-two-site-states-2}
+\include{slides/07-two-site-operators-1}
+\include{slides/07-two-site-operators-2}
+\include{slides/08-two-site-operators-custom-1}
+\include{slides/08-two-site-operators-custom-2}
+\include{slides/09-two-site-state-optimization-1}
+\include{slides/09-two-site-state-optimization-2}
+\include{slides/10-two-site-circuit-optimization-1}
+\include{slides/10-two-site-circuit-optimization-2}
+\include{slides/11-two-site-fidelity-optimization}
 \include{slides/future-directions}
 
 \end{document}
