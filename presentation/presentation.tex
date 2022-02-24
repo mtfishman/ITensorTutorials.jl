@@ -28,14 +28,27 @@
   morekeywords = [2]{ITensors, Index, ITensor}, % define more types and modules
 }
 
+\newcommand{\myhref}[3][blue]{\href{#2}{\color{#1}{#3}}}%
+
+% Customize caption, remove "Figure: " prefix
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
 \newcommand{\todo}[1]{{\color{red}[TODO: #1]}}
 
-\title{\raggedright\fontfamily{phv}\selectfont{\color{black}\textls[200]{\uppercase{Analyzing Quantum Many-Body Systems with ITensor and PastaQ}}}}
-% \title{SLIDES ESTILO TUFTE}
-\author{\raggedright\fontfamily{phv}\selectfont{\color{black}\textls[200]{\uppercase{Matthew Fishman \\ \vspace*{0.2cm} Center for Computational Quantum Physics (CCQ), Flatiron Institute, NY \\ \vspace*{0.7cm} \texttt{\lowercase{\textls[10]{mfishman@flatironinstitute.org}}}}}}}
-%  \renewcommand{\familydefault}{mathpazo}
+\title{
+  \centering
+  Analyzing Quantum Many-Body Systems with ITensor and PastaQ
+}
 
-\date{}
+\author{
+  \centering
+  Matthew Fishman \\
+  Center for Computational Quantum Physics (CCQ) \\
+  Flatiron Institute, NY \\
+  \myhref{mtfishman.github.io}{https://mtfishman.github.io/}
+}
+
+\date{\today}
 
 \setbeamerfont{frametitle}{series=\itshape}
 \setbeamercolor{frametitle}{fg=black} 
@@ -52,7 +65,21 @@
 
 \begin{frame}
 
-  \maketitle
+  \begin{center}
+
+    \maketitle
+
+  \end{center}
+
+  \begin{figure}[T]
+
+      \centering
+      \includegraphics[width=0.4\textwidth]{
+        slides/assets/whoam-i-flatiron-institute-ccq.jpg
+      }
+      %\caption{}
+
+  \end{figure}
 
 \end{frame}
 

@@ -1,5 +1,5 @@
 # TODO: remove once changes are merged
-include("patches.jl")
+include(joinpath("src", "patches.jl"))
 
 using ITensors
 
