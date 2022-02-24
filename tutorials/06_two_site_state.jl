@@ -46,11 +46,11 @@ ZmZp = Zm1 * Zp2
 # State |Z+Z+⟩
 ZpZp = Zp1 * Zp2
 
-Xp1 = state("Z+", i1)
-Xp2 = state("Z+", i2)
+Xp1 = state("X+", i1)
+Xp2 = state("X+", i2)
 
-Xm1 = state("Z-", i1)
-Xm2 = state("Z-", i2)
+Xm1 = state("X-", i1)
+Xm2 = state("X-", i2)
 
 # State |Z-⟩|Z-⟩
 ZmZm = Zm1 * Zm2
@@ -72,12 +72,12 @@ entanglement_entropy(s) = sum(sn -> iszero(sn) ? zero(sn) : -sn^2 * log(sn^2), s
 
 # Compact syntax for matrix decompositions like SVD,
 # which reveal the rank/entanglement:
-U, S, V = svd(ZmZp, i1)
+_, S, _ = svd(ZmZp, i1)
 s = diag(S)
 @show s
 @show entanglement_entropy(s)
 
-U, S, V = svd(Cat, i1)
+_, S, _ = svd(Cat, i1)
 s = diag(S)
 @show s
 @show entanglement_entropy(s)

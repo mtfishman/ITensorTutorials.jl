@@ -1,5 +1,7 @@
 \begin{frame}[fragile]{Tutorial: Two-site circuit optimization}
 
+\todo{Add visualization of U}
+
 \begin{columns}
 
 \begin{column}{5cm}
@@ -7,23 +9,17 @@
 \begin{onlyenv}<1->
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-function op(
-  ::OpName"U",
-  ::SiteType"S=1/2";
-  $\theta$1, $\theta$2
-)
-  c1 = cos($\theta$1/2)
-  s1 = sin($\theta$1/2)
-  c2 = cos($\theta$2/2)
-  s2 = sin($\theta$2/2)
-  return [
-    c1  0   0 -s1
-    0  c2 -s2   0
-    0  s2  c2   0
-    s1  0   0  c1
-  ]
-end
-\end{lstlisting}
+# Circuit as a vector of gates:
+U($\theta$, i1, i2) = [
+  op("Ry", i1; $\theta$=$\theta$[1]),
+  op("Ry", i2; $\theta$=$\theta$[2]),
+  op("CNOT", i1, i2),
+  op("Ry", i1; $\theta$=$\theta$[3]),
+  op("Ry", i2; $\theta$=$\theta$[4]),
+]
+
+
+ \end{lstlisting}
 
 \end{onlyenv}
 
@@ -40,23 +36,18 @@ end
 
 \begin{onlyenv}<1->
 
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# Circuit optimization.
-#
-# Note: This is a Matchgate.
-# We could do this
-# with free fermions.
-
-
-
-
-
-
-
-
-
-
- \end{lstlisting}
+\begin{lstlisting}[language=JuliaLocal, style=julia, numbers=none, mathescape, basicstyle=\small]
+# PastaQ notation:
+u($\theta$, j1, j2) = [
+  ("Ry", j1, (; $\theta$=$\theta$[1])),
+  ("Ry", j2, (; $\theta$=$\theta$[2])),
+  ("CNOT", j1, j2),
+  ("Ry", j1, (; $\theta$=$\theta$[3])),
+  ("Ry", j2, (; $\theta$=$\theta$[4])),
+]
+U($\theta$, i1, i2) =
+  buildcircuit(u($\theta$, 1, 2), [i1, i2])
+\end{lstlisting}
 
 \end{onlyenv}
 

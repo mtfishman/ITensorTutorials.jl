@@ -9,13 +9,16 @@
 \begin{onlyenv}<1->
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-using Zygote
-
-$\partial$E($\psi$) = gradient(E, $\psi$)[1]
-
 $\psi_0$ = (Zp1 * Zm2 +
          Zm1 * Zp2)/√2
- \end{lstlisting}
+
+E($\psi_0$)
+
+using Zygote: gradient
+$\partial$E($\psi$) = gradient(E, $\psi$)[1]
+
+norm($\partial$E($\psi_0$))
+\end{lstlisting}
 
 \end{onlyenv}
 
@@ -24,7 +27,6 @@ $\psi_0$ = (Zp1 * Zm2 +
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
 $\psi$ = minimize(E, $\partial$E, $\psi_0$;
        nsteps=10, $\gamma$=0.1)
-
 
 E($\psi_0$), norm($\partial$E($\psi_0$))
 E($\psi$), norm($\partial$E($\psi$))
@@ -39,13 +41,15 @@ E($\psi$), norm($\partial$E($\psi$))
 \begin{onlyenv}<1->
 
 \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# Using Zygote for automatic
-# differentation of the energy.
-#
-# Starting state:
-#
 # |$\psi_0\rangle$ = (|Z+Z+$\rangle$ +
 #            |Z-Z-$\rangle$)/√2
+
+# $\approx$ -1
+
+# Using Zygote for automatic
+# differentation of the energy.
+
+# $\approx$ 2
 \end{lstlisting}
 
 \end{onlyenv}
@@ -53,13 +57,12 @@ E($\psi$), norm($\partial$E($\psi$))
 \begin{onlyenv}<2->
 
 \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# Minimize:
-#
+# Minimize over $\psi$:
 # E($\psi$) = $\langle\psi$|H|$\psi\rangle$/$\langle\psi$|$\psi\rangle$
-#
-# (-1, 4)
-# (-2.236068, 4.2766287e-6)
-# $\approx$ (-√5, 0)
+
+# (-1, 2)
+# (-1.4142131, 0.0010865277)
+#         $\approx$ (-√2, 0)
 \end{lstlisting}
 
 \end{onlyenv}

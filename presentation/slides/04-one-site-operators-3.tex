@@ -22,10 +22,11 @@ inner(Zp', XZp)
 \begin{onlyenv}<2->
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-apply(X, Zp) == Zm
-
 (dag(Zm)' * X * Zp)[]
 inner(Zm', X, Zp)
+
+XZp = apply(X, Zp)
+inner(Zm, XZp)
 \end{lstlisting}
 
 \end{onlyenv}
@@ -50,9 +51,10 @@ inner(Zm', X, Zp)
 \begin{onlyenv}<2->
 
 \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# false
-
 # $\approx$ 1
+# $\approx$ 1
+
+# = noprime(X * Zp)
 # $\approx$ 1
 \end{lstlisting}
 

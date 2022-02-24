@@ -13,20 +13,18 @@ $\psi_0$ = Zp1 * Zp2
 $\psi$ = (ZpZp + ZmZm) / √2
 
 function F($\theta$)
-  $\theta$1, $\theta$2 = $\theta$
-  U$_\theta$ = op("U", i1, i2;
-              $\theta$1=$\theta$1, $\theta$2=$\theta$2)
-  $\psi_\theta$ = apply(U$_\theta$, $\psi_0$)
-  return -abs(inner($\psi$, $\psi_\theta$))
+  $\psi_\theta$ = apply(U($\theta$, i1, i2), $\psi_0$)
+  return -abs(inner($\psi$, $\psi_\theta$))^2
 end
-\end{lstlisting}
+
+ \end{lstlisting}
 
 \end{onlyenv}
 
 \begin{onlyenv}<2->
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-$\theta_0$ = [0, 0]
+$\theta_0$ = [0, 0, 0, 0]
 $\theta$ = minimize(F, $\partial$F, $\theta_0$;
         nsteps=50, $\gamma$=0.1)
 
@@ -50,9 +48,8 @@ F($\theta$), norm($\partial$F($\theta$))
 # |$\psi\rangle$ = (|Z+Z+$\rangle$ +
 #           |Z-Z-$\rangle$)/√2
 
-# Find U($\theta$) that minimizes
-#
-# F($\theta$) = -|$\langle\psi$|U($\theta$)|0$\rangle$|
+# Find $\theta$ that minimizes:
+# F($\theta$) = -|$\langle\psi$|U($\theta$)|0$\rangle$|$^2$
 \end{lstlisting}
 
 \end{onlyenv}
@@ -60,12 +57,13 @@ F($\theta$), norm($\partial$F($\theta$))
 \begin{onlyenv}<2->
 
 \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+
 # F($\theta_0$), norm($\partial$F($\theta_0$)) =
 #   (-0.5, 0.5)
 
 # F($\theta$), norm($\partial$F($\theta$)) =
 #   (-0.9938992, 0.07786879)
- \end{lstlisting}
+\end{lstlisting}
 
 \end{onlyenv}
 

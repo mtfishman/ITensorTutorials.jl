@@ -21,10 +21,10 @@ end
 \begin{onlyenv}<2->
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-function minimize(f, ∂f, x;
+function minimize(f, $\partial$f, x;
   nsteps, $\gamma$)
   for n in 1:nsteps
-    x = x - $\gamma$ * ∂f(x)
+    x = x - $\gamma$ * $\partial$f(x)
   end
   return x
 end

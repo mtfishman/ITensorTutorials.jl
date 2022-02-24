@@ -4,14 +4,14 @@
 
 \begin{columns}
 
-\begin{column}{5cm}
+\begin{column}{4.5cm}
 
 \begin{onlyenv}<1->
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
   n = 30
-  i = [Index(2, "S=1/2") for
-        j in 1:n]
+  i = [Index(2, "S=1/2")
+        for j in 1:n]
 
   Zp = MPS(i, "Z+")
   Zm = MPS(i, "Z-")
@@ -26,9 +26,10 @@
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
   maxlinkdim(Zp)
   maxlinkdim(Cat)
-  norm(Cat)
   inner(Zp, Zp)
   inner(Zm, Zp)
+  norm(Cat)
+
   inner(Zp, Cat)
 \end{lstlisting}
 
@@ -36,7 +37,7 @@
 
 \end{column}
 
-\begin{column}{5cm}
+\begin{column}{5.5cm}
 
 \begin{onlyenv}<1->
 
@@ -57,12 +58,13 @@
 \begin{onlyenv}<2->
 
 \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# 1
-# 2
-# $\approx$ 1
-# $\approx$ 1
-# $\approx$ 0
-# $\approx$ 1/√2
+# 1 (product state)
+# 2 (entangled state)
+# $\langle$Z+|Z+$\rangle$ $\approx$ 1
+# $\langle$Z-|Z+$\rangle$ $\approx$ 0
+# ($\langle$Z+| + $\langle$Z-|)(|Z+$\rangle$ + |Z+$\rangle$)/2
+#       $\approx$ 1
+# $\langle$Z+|(|Z+$\rangle$ + |Z+$\rangle$)/√2 $\approx$ 1/√2
 \end{lstlisting}
 
 \end{onlyenv}

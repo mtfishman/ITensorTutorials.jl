@@ -9,39 +9,24 @@ println("
 #######################################################
 ")
 
-# Circuit optimization
-# Bonus: this is a Matchgate, we could do this
-# with free fermions (correlation matrix formalism)
-function op(::OpName"U", ::SiteType"S=1/2"; θ1, θ2)
-  c1 = cos(θ1/2)
-  s1 = sin(θ1/2)
-  c2 = cos(θ2/2)
-  s2 = sin(θ2/2)
-  return [
-    c1  0   0 -s1
-    0  c2 -s2   0
-    0  s2  c2   0
-    s1  0   0  c1
-  ]
-end
-
 # References state `|0⟩ = |Z+Z+⟩`
 ψ⁰ = Zp1 * Zp2
 
-# Find `U(θ)` that minimizes
-#
+# Form the circuit from parameters
+U(θ, i1, i2) = [
+  op("Ry", i1; θ=θ[1]),
+  op("Ry", i2; θ=θ[2]),
+  op("CNOT", i1, i2),
+  op("Ry", i1; θ=θ[3]),
+  op("Ry", i2; θ=θ[4]),
+]
+
+# Find the circuit `U(θ)` that minimizes:
 # energy_circuit(θ) = ⟨0|U(θ)† H U(θ)|0⟩ = ⟨θ|H|θ⟩
 function E(θ)
-  # Circuit: for now just a single gate:
-  # U(θ)
-  θ1, θ2 = θ
-  Uᶿ = op("U", i1, i2; θ1=θ1, θ2=θ2)
-
-  # Apply the gate to the circuit:
+  # Apply the circuit:
   # |θ⟩ = U(θ)|0⟩
-  #
-  # Same as `noprime(Uᶿ * ψ0)`:
-  ψᶿ = apply(Uᶿ, ψ⁰)
+  ψᶿ = apply(U(θ, i1, i2), ψ⁰)
 
   # Compute the expecation value: ⟨θ|H|θ⟩
   # No need to normalize!
@@ -49,9 +34,9 @@ function E(θ)
 end
 
 println("Circuit optimization")
-θ⁰ = [π/2, 0]
+θ⁰ = zeros(4)
 ∂E(ψ) = gradient(E, ψ)[1]
-θ = minimize(E, ∂E, θ⁰; nsteps=30, γ=0.1)
+θ = minimize(E, ∂E, θ⁰; nsteps=40, γ=0.5)
 
 @show θ⁰, E(θ⁰), norm(∂E(θ⁰))
 @show θ, E(θ), norm(∂E(θ))
