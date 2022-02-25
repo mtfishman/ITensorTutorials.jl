@@ -24,8 +24,8 @@
 
 \lstdefinelanguage{JuliaLocal}{
   language = Julia, % inherit Julia lang. to add keywords
-  morekeywords = [3]{@visualize, inner, prime, noprime, apply, dag, op, E, F, gradient, minimize, norm, maxlinkdim, state, set_backend!, ising_mpo}, % define more functions
-  morekeywords = [2]{ITensors, ITensorVisualizationBase, Index, ITensor, MPS, MPO, OpSum, StateName, OpName, SiteType}, % define more types and modules
+  morekeywords = [3]{@visualize, inner, prime, noprime, apply, dag, op, E, F, gradient, minimize, norm, maxlinkdim, state, set_backend!, ising_mpo, runcircuit}, % define more functions
+  morekeywords = [2]{ITensors, PastaQ, ITensorUnicodePlots, ITensorGLMakie, ITensorMakie, ITensorVisualizationBase, Index, ITensor, MPS, MPO, OpSum, StateName, OpName, SiteType}, % define more types and modules
 }
 
 \newcommand{\myhref}[3][blue]{\href{#2}{\color{#1}{#3}}}%
@@ -75,7 +75,7 @@
 
       \centering
       \includegraphics[width=0.4\textwidth]{
-        slides/assets/whoam-i-flatiron-institute-ccq.jpg
+        slides/assets/who-am-i-flatiron-institute-ccq.jpg
       }
       %\caption{}
 
@@ -84,13 +84,17 @@
 \end{frame}
 
 \include{slides/who-am-i}
-\include{slides/what-is-ccq}
+\include{slides/what-is-ccq-1}
+\include{slides/what-is-ccq-2}
 \include{slides/what-is-itensor}
-\include{slides/what-is-julia}
+\include{slides/what-is-julia-1}
+\include{slides/what-is-julia-2}
 \include{slides/what-is-pastaq}
-\include{slides/when-tensor-networks}
+\include{slides/when-tensor-networks-1}
+\include{slides/when-tensor-networks-2}
 \include{slides/what-are-tensor-networks}
-\include{slides/install-itensor}
+\include{slides/install-itensor-1}
+\include{slides/install-itensor-2}
 \include{slides/01-one-site-basics-1}
 \include{slides/01-one-site-basics-2}
 \include{slides/01-one-site-basics-3}

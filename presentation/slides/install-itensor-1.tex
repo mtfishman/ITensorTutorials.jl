@@ -1,0 +1,23 @@
+\begin{frame}[fragile]{How do I install ITensor/PastaQ?}
+
+\begin{enumerate}
+
+  \item Download Julia: \myhref{https://julialang.org/downloads/}{julialang.org/downloads}
+  \item Launch Julia:
+\begin{lstlisting}[language=JuliaLocal, numbers=none, style=julia, basicstyle=\small]
+$ julia
+\end{lstlisting}
+  \item Type the following commands:
+\begin{lstlisting}[language=JuliaLocal, numbers=none, style=julia, basicstyle=\small]
+julia> using Pkg
+
+julia> Pkg.add("ITensors")
+[...]
+
+julia> Pkg.add("PastaQ")
+[...]
+\end{lstlisting}
+
+\end{enumerate}
+
+\end{frame}
