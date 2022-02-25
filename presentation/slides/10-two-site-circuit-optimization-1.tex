@@ -13,7 +13,7 @@
 U($\theta$, i1, i2) = [
   op("Ry", i1; $\theta$=$\theta$[1]),
   op("Ry", i2; $\theta$=$\theta$[2]),
-  op("CNOT", i1, i2),
+  op("CX", i1, i2),
   op("Ry", i1; $\theta$=$\theta$[3]),
   op("Ry", i2; $\theta$=$\theta$[4]),
 ]

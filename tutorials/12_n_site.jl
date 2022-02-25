@@ -67,58 +67,107 @@ HZp = H * Zp
 
 # Gradient energy minimization
 # Already written above! New Hamiltonian.
-function energy(H, ψ)
+function E(ψ)
   ψHψ = inner(ψ', H, ψ)
   ψψ = inner(ψ, ψ)
   return ψHψ / ψψ
 end
 
-function minimize(f, x; nsteps, γ, cutoff, maxdim)
-  g(x) = gradient(f, x)[1]
+function minimize(f, ∂f, x; nsteps, γ, kwargs...)
   for n in 1:nsteps
     println("n = ", n, ", f_x = ", f(x))
-    x = -(x, γ * g(x); cutoff, maxdim=maxdim)
+    x = -(x, γ * ∂f(x); kwargs...)
   end
   return x
 end
 
-ψ0 = MPS(i, "Z+")
-f(ψ) = energy(H, ψ)
-ψ_min = minimize(f, ψ0; nsteps=50, γ=0.1, maxdim=20, cutoff=1e-5)
+ψ⁰ = MPS(i, "Z+")
+∂E(x) = gradient(E, x)[1]
+ψ = minimize(E, ∂E, ψ⁰; nsteps=50, γ=0.1, maxdim=10, cutoff=1e-5)
 
-@show maxlinkdim(ψ_min)
+# TODO: change to:
+# ψ /= norm(ψ)
+ψ *= inv(norm(ψ))
 
-e_dmrg, ψ_dmrg = dmrg(H, ψ0; nsweep=10, maxdim=10, cutoff=1e-5)
+Eᵈᵐʳᵍ, ψᵈᵐʳᵍ = dmrg(H, ψ⁰; nsweep=10, maxdim=10, cutoff=1e-5)
 
-## function layer(i, θ, p, r)
-##   return [op("U", i[n], i[n + 1]; θ1=θ[p+=1], θ2=θ[p+=1]) for n in r], p
-## end
-## 
-## # TODO: Finish this implementation
-## function circuit(i, θ, nlayers)
-##   ## # Circuit (single gate)
-##   ## θ1, θ2 = θ
-##   ## U_θ = op("U", i1, i2; θ1=θ1, θ2=θ2)
-##   p = 0
-##   ls = []
-##   for n in 1:nlayers
-##     l_odd, p = layer(i, θ, p, 1:2:(length(i) - 1))
-##     l_even, p = layer(i, θ, p, 2:2:(length(i) - 1))
-##     ls = [ls; l_odd]
-##     ls = [ls; l_even]
-##   end
-##   return ls
-## end
-## 
-## # TODO: Finish this implementation
-## # Example of preparing the ground state
-## # Find `U(θ)` that minimizes
-## #
-## # state_preparation(θ) = -|⟨y|U(θ)|x⟩|²
-## function state_preparation(θ; maxdim, cutoff)
-##   U_θ = circuit(i, θ, nlayers)
-##   Ux = apply(U_θ, x; maxdim, cutoff)
-##   yUx = inner(y, Ux)
-##   return -abs(yUx)^2
-## end
+@show maxlinkdim(ψ⁰)
+@show maxlinkdim(ψ)
+@show maxlinkdim(ψᵈᵐʳᵍ)
+@show E(ψ⁰), norm(∂E(ψ⁰))
+@show E(ψ), norm(∂E(ψ))
+@show E(ψᵈᵐʳᵍ), norm(∂E(ψᵈᵐʳᵍ))
 
+#
+# Circuit optimization
+#
+
+# Form the circuit from parameters
+Ry_layer(θ, i) = [op("Ry", i[j]; θ=θ[j]) for j in 1:n]
+CX_layer(i) = [op("CX", i[j], i[j+1]) for j in 1:2:(n-1)]
+
+function U(θ, i; nlayers)
+  n = length(i)
+  Uᶿ = Ry_layer(θ[1:n], i)
+  for l in 1:(nlayers - 1)
+    Uᶿ = [Uᶿ; CX_layer(i)]
+    Uᶿ = [Uᶿ; Ry_layer(θ[(1:n) .+ l * n], i)]
+  end
+  return Uᶿ
+end
+
+nlayers = 6
+maxdim = 10
+cutoff = 1e-5
+
+# Find the circuit `U(θ)` that minimizes:
+# E(θ) = ⟨0|U(θ)† H U(θ)|0⟩ = ⟨θ|H|θ⟩
+function E(θ)
+  # Apply the circuit:
+  # |θ⟩ = U(θ)|0⟩
+  ψᶿ = apply(U(θ, i; nlayers=nlayers), ψ⁰; maxdim=maxdim, cutoff=cutoff)
+
+  # Compute the expecation value: ⟨θ|H|θ⟩
+  # No need to normalize!
+  return inner(ψᶿ', H, ψᶿ)
+end
+
+println()
+println("Circuit optimization")
+θ⁰ = zeros(nlayers * n)
+∂E(ψ) = gradient(E, ψ)[1]
+θ = minimize(E, ∂E, θ⁰; nsteps=20, γ=0.1)
+
+ψᶿ = apply(U(θ, i; nlayers=nlayers), ψ⁰; maxdim=maxdim, cutoff=cutoff)
+
+@show maxlinkdim(ψ⁰)
+@show maxlinkdim(ψᶿ)
+@show E(θ⁰), norm(∂E(θ⁰))
+@show E(θ), norm(∂E(θ))
+
+# TODO: Finish this implementation
+# Example of preparing the ground state
+# Find `U(θ)` that minimizes
+#
+# F(θ) = -|⟨ψ|U(θ)|0⟩|²
+function F(θ)
+  # Apply the circuit:
+  # |θ⟩ = U(θ)|0⟩
+  ψᶿ = apply(U(θ, i; nlayers=nlayers), ψ⁰; maxdim=maxdim, cutoff=cutoff)
+
+  # -|⟨ψ|θ⟩|²
+  return -abs(inner(ψ, ψᶿ))^2
+end
+
+println()
+println("State preparation")
+θ⁰ = zeros(nlayers * n)
+∂F(ψ) = gradient(F, ψ)[1]
+θ = minimize(F, ∂F, θ⁰; nsteps=20, γ=0.1)
+
+ψᶿ = apply(U(θ, i; nlayers=nlayers), ψ⁰; maxdim=maxdim, cutoff=cutoff)
+
+@show maxlinkdim(ψ⁰)
+@show maxlinkdim(ψᶿ)
+@show F(θ⁰), norm(∂F(θ⁰))
+@show F(θ), norm(∂F(θ))
