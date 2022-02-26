@@ -1,13 +1,10 @@
-\begin{frame}[fragile]{Tutorial: n-site states with MPS}
-
-\todo{Add visualization of H}
+\begin{frame}[fragile]{Tutorial: n-site operators with MPO}
 
 \begin{columns}
 
 \begin{column}{5cm}
 
 \begin{onlyenv}<1->
-
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
 function ising(n; h)
   H = OpSum()
@@ -20,11 +17,9 @@ function ising(n; h)
   return H
 end
 \end{lstlisting}
-
 \end{onlyenv}
 
-\begin{onlyenv}<2->
-
+\begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
 h = 0.5
 H = MPO(ising(n; h=h), i)
@@ -32,40 +27,48 @@ maxlinkdim(H)
 Zp = MPS(i, "Z+")
 inner(Zp', H, Zp)
  \end{lstlisting}
-
 \end{onlyenv}
 
 \end{column}
 
 \begin{column}{5.5cm}
 
-\begin{onlyenv}<1->
-
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# n sites
-# $H = -\sum_j^{n-1} Z_j Z_{j+1} + h \sum_j^n X_j$
-
-
-
-
-
-
-
- \end{lstlisting}
-
+\begin{onlyenv}<1-1>
+n sites \\
+$H = -\sum_j^{n-1} Z_j Z_{j+1} + h \sum_j^n X_j$ \\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
 \end{onlyenv}
 
 \begin{onlyenv}<2->
+\vspace*{0.0cm}
+\begin{center}
+\includegraphics[width=0.2\textwidth]{
+  slides/assets/isingn.png
+}
+\includegraphics[width=0.2\textwidth]{
+  slides/assets/isingn_mpo.png
+}
+\includegraphics[width=0.2\textwidth]{
+  slides/assets/Zpn_H_Zpn.png
+}
+\end{center}
+\vspace*{0.0cm}
+\end{onlyenv}
 
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-
-
-# = 3 (local Hamiltonian)
-
-# $\langle$Z+Z+…Z+|H|Z+Z+…Z+$\rangle$
-#   $\approx$ -(n - 1) = -29
-\end{lstlisting}
-
+\begin{onlyenv}<3->
+~\\
+~\\
+= 3 (local Hamiltonian) \\
+~\\
+$\langle$Z+Z+…Z+|H|Z+Z+…Z+$\rangle$ \\
+  $\approx$ -(n - 1) = -29
 \end{onlyenv}
 
 \end{column}

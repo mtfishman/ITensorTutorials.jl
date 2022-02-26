@@ -1,13 +1,10 @@
 \begin{frame}[fragile]{Tutorial: n-site states with MPS}
 
-\todo{Add visualization of <Zp|ψ>}
-
 \begin{columns}
 
 \begin{column}{4.5cm}
 
 \begin{onlyenv}<1->
-
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
   n = 30
   i = [Index(2, "S=1/2")
@@ -16,57 +13,81 @@
   Zp = MPS(i, "Z+")
   Zm = MPS(i, "Z-")
 
-  ψ = (Zp + Zm)/√2
+  $\psi$ = (Zp + Zm)/√2
  \end{lstlisting}
-
 \end{onlyenv}
 
-\begin{onlyenv}<2->
-
+\begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
   maxlinkdim(Zp)
-  maxlinkdim(ψ)
+  maxlinkdim($\psi$)
   inner(Zp, Zp)
   inner(Zm, Zp)
-  norm(ψ)
+  norm($\psi$)
 
-  inner(Zp, ψ)
+  inner(Zp, $\psi$)
 \end{lstlisting}
-
 \end{onlyenv}
 
 \end{column}
 
 \begin{column}{5.5cm}
 
-\begin{onlyenv}<1->
-
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# n-site state
-
-
-
-# |Z+Z+…Z+$\rangle$
-# |Z-Z-…Z-$\rangle$
-
-# (|Z+Z+…Z+$\rangle$ +
-#  |Z-Z-…Z-$\rangle$)/√2
-\end{lstlisting}
-
+\begin{onlyenv}<1-1>
+n-site state \\
+~\\
+~\\
+~\\
+|Z+Z+…Z+$\rangle$ \\
+|Z-Z-…Z-$\rangle$ \\
+~\\
+(|Z+Z+…Z+$\rangle$ + \\
+ |Z-Z-…Z-$\rangle$)/√2
 \end{onlyenv}
 
 \begin{onlyenv}<2->
+\vspace*{0.0cm}
+\begin{center}
+\includegraphics[width=0.05\textwidth]{
+  slides/assets/in.png
+}
+\includegraphics[width=0.05\textwidth]{
+  slides/assets/Zpn.png
+}
+\includegraphics[width=0.05\textwidth]{
+  slides/assets/Zmn.png
+}
+\end{center}
+\vspace*{0.0cm}
+\end{onlyenv}
 
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# 1 (product state)
-# 2 (entangled state)
-# $\langle$Z+|Z+$\rangle$ $\approx$ 1
-# $\langle$Z-|Z+$\rangle$ $\approx$ 0
-# ($\langle$Z+| + $\langle$Z-|)(|Z+$\rangle$ + |Z+$\rangle$)/2
-#       $\approx$ 1
-# $\langle$Z+|(|Z+$\rangle$ + |Z+$\rangle$)/√2 $\approx$ 1/√2
-\end{lstlisting}
+\begin{onlyenv}<3-3>
+1 (product state) \\
+2 (entangled state) \\
+$\langle$Z+|Z+$\rangle$ $\approx$ 1 \\
+$\langle$Z-|Z+$\rangle$ $\approx$ 0 \\
+($\langle$Z+| + $\langle$Z-|)(|Z+$\rangle$ + |Z+$\rangle$)/2 \\
+      $\approx$ 1 \\
+$\langle$Z+|(|Z+$\rangle$ + |Z+$\rangle$)/√2 $\approx$ 1/√2 \\
+\end{onlyenv}
 
+\begin{onlyenv}<4->
+\vspace*{0.0cm}
+\begin{center}
+\includegraphics[width=0.05\textwidth]{
+  slides/assets/catn.png
+}
+\includegraphics[width=0.05\textwidth]{
+  slides/assets/catn_mps.png
+}
+\includegraphics[width=0.05\textwidth]{
+  slides/assets/Zpn_Zpn.png
+}
+\includegraphics[width=0.05\textwidth]{
+  slides/assets/Zpn_catn.png
+}
+\end{center}
+\vspace*{0.0cm}
 \end{onlyenv}
 
 \end{column}
