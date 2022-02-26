@@ -23,8 +23,8 @@ ylims!(f.axis, 0, x_max)
 
 textsize = 50
 
-text!(f.axis, "Classical"; position=Point2f(0.3, 0.3), textsize=textsize)
-text!(f.axis, "Quantum"; position=Point2f(0.5x_max, 0.5x_max), textsize=textsize)
+text!(f.axis, "Classical\ncomputer"; position=Point2f(0.3, 0.3), textsize=textsize)
+text!(f.axis, "Quantum\ncomputer"; position=Point2f(0.5x_max, 0.5x_max), textsize=textsize)
 text!(f.axis, "Full state"; position=Point2f(0.3, 0.5x_max), rotation=π/2, textsize=textsize)
 text!(f.axis, "Tensor networks"; position=Point2f(0.5x_max, 0.01), textsize=textsize)
 

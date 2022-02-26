@@ -3,6 +3,7 @@
 *.jl.mem
 *.o
 *.swp
+.~lock.*
 .DS_Store
 .benchmarkci
 .tmp
