@@ -1,6 +1,6 @@
 \begin{frame}[fragile]{Tutorial: n-site states with MPS}
 
-\todo{Add visualization of <Zp|Cat>}
+\todo{Add visualization of <Zp|ψ>}
 
 \begin{columns}
 
@@ -16,7 +16,7 @@
   Zp = MPS(i, "Z+")
   Zm = MPS(i, "Z-")
 
-  Cat = (Zp + Zm)/√2
+  ψ = (Zp + Zm)/√2
  \end{lstlisting}
 
 \end{onlyenv}
@@ -25,12 +25,12 @@
 
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
   maxlinkdim(Zp)
-  maxlinkdim(Cat)
+  maxlinkdim(ψ)
   inner(Zp, Zp)
   inner(Zm, Zp)
-  norm(Cat)
+  norm(ψ)
 
-  inner(Zp, Cat)
+  inner(Zp, ψ)
 \end{lstlisting}
 
 \end{onlyenv}

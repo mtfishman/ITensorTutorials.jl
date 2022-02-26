@@ -5,7 +5,6 @@
 \begin{column}{4.5cm}
 
 \begin{onlyenv}<1->
-
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
 i1 = Index(2, "S=1/2")
 i2 = Index(2, "S=1/2")
@@ -15,11 +14,9 @@ i1 == i2
 ZpZm = ITensor(i1, i2)
 ZpZm[i1=>1, i2=>2] = 1
 \end{lstlisting}
-
 \end{onlyenv}
 
-\begin{onlyenv}<2->
-
+\begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
 Zp1 = state("Z+", i1)
 Zp2 = state("Z+", i2)
@@ -30,39 +27,59 @@ Zm2 = state("Z-", i2)
 ZpZm = Zp1 * Zm2
 ZmZp = Zm1 * Zp2
 \end{lstlisting}
-
 \end{onlyenv}
 
 \end{column}
 
 \begin{column}{5cm}
 
-\begin{onlyenv}<1->
-
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# (dim=2|id=505|``S=1/2'')
-# (dim=2|id=576|``S=1/2'')
- 
-# false
-
-# |Z+$\rangle_1$|Z-$\rangle_2$ = |Z+Z-$\rangle$
- \end{lstlisting}
-
+\begin{onlyenv}<1-1>
+(dim=2|id=505|``S=1/2'') \\
+(dim=2|id=576|``S=1/2'') \\
+~\\
+false \\
+~\\
+|Z+$\rangle_1$|Z-$\rangle_2$ = |Z+Z-$\rangle$ \\
 \end{onlyenv}
 
 \begin{onlyenv}<2->
+\vspace*{0.0cm}
+\begin{center}
+\includegraphics[width=0.2\textwidth]{
+  slides/assets/i1i2.png
+} \\
+\includegraphics[width=0.2\textwidth]{
+  slides/assets/ZpZm12.png
+}
+\end{center}
+\vspace*{0.0cm}
+\end{onlyenv}
 
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# |Z+$\rangle_1$
-# |Z+$\rangle_2$
+\begin{onlyenv}<3-3>
+|Z+$\rangle_1$ \\
+|Z+$\rangle_2$ \\
+~\\
+|Z-$\rangle_1$ \\
+|Z-$\rangle_2$ \\
+~\\
+|Z+Z-$\rangle$ = |Z+$\rangle_1$|Z-$\rangle_2$ \\
+|Z-Z+$\rangle$ = |Z-$\rangle_1$|Z+$\rangle_2$
+\end{onlyenv}
 
-# |Z-$\rangle_1$
-# |Z-$\rangle_2$
-
-# |Z+Z-$\rangle$ = |Z+$\rangle_1$|Z-$\rangle_2$
-# |Z-Z+$\rangle$ = |Z-$\rangle_1$|Z+$\rangle_2$
-\end{lstlisting}
-
+\begin{onlyenv}<4->
+\vspace*{0.0cm}
+\begin{center}
+\includegraphics[width=0.2\textwidth]{
+  slides/assets/Zp1Zm1Zp2Zm2.png
+} \\
+\includegraphics[width=0.2\textwidth]{
+  slides/assets/ZpZm12_eq_Zp1Zm2.png
+}
+\includegraphics[width=0.2\textwidth]{
+  slides/assets/ZmZp12_eq_Zm1Zp2.png
+}
+\end{center}
+\vspace*{0.0cm}
 \end{onlyenv}
 
 \end{column}

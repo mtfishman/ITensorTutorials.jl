@@ -1,24 +1,19 @@
 \begin{frame}[fragile]{Tutorial: Two-site operators}
 
-\todo{Add visualization of H}
-
 \begin{columns}
 
 \begin{column}{4.5cm}
 
 \begin{onlyenv}<1->
-
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
 H = ITensor(i1', i2', i1, i2)
 H[i1'=>2, i2'=>1,
    i1=>2, i2=>1] = -1
 # …
 \end{lstlisting}
-
 \end{onlyenv}
 
 \begin{onlyenv}<2->
-
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
 Id1 = op("Id", i1)
 Z1 = op("Z", i1)
@@ -32,7 +27,6 @@ IX = Id1 * X2
 h = 0.5
 H = -ZZ + h * (XI + IX)
 \end{lstlisting}
-
 \end{onlyenv}
 
 \end{column}
@@ -40,31 +34,34 @@ H = -ZZ + h * (XI + IX)
 \begin{column}{5.5cm}
 
 \begin{onlyenv}<1->
-
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# Make a Hamiltonian:
-# Transverse field Ising
-# n=2 sites
-# $H = -\sum_j^{n-1} Z_j Z_{j+1} + h \sum_j^n X_j$
-\end{lstlisting}
-
+Make a Hamiltonian: \\
+Transverse field Ising \\
+n=2 sites \\
+$H = -\sum_j^{n-1} Z_j Z_{j+1} + h \sum_j^n X_j$
 \end{onlyenv}
 
-\begin{onlyenv}<2->
+\begin{onlyenv}<2-2>
+Alternative: \\
+Build from single-site \\
+operators. \\
+Less error-prone. \\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+\end{onlyenv}
 
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# Alternative:
-# Build from single-site
-# operators.
-# Less error-prone.
-
-
-
-
-
-
- \end{lstlisting}
-
+\begin{onlyenv}<3->
+\vspace*{0.0cm}
+\begin{center}
+\includegraphics[width=0.2\textwidth]{
+  slides/assets/ising12.png
+}
+\end{center}
+\vspace*{0.0cm}
 \end{onlyenv}
 
 \end{column}

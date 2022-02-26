@@ -5,7 +5,6 @@
 \begin{column}{4.5cm}
 
 \begin{onlyenv}<1->
-
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
 Z = op("Z", i)
 X = op("X", i)
@@ -13,45 +12,63 @@ X = op("X", i)
 Zp = state("Z+", i)
 Zm = state("Z-", i)
 \end{lstlisting}
-
 \end{onlyenv}
 
-\begin{onlyenv}<2->
-
+\begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
 XZp = X * Zp
 XZp == Zm
 XZp == Zm'
 noprime(XZp) == Zm
 \end{lstlisting}
-
 \end{onlyenv}
 
 \end{column}
 
 \begin{column}{4.5cm}
 
-\begin{onlyenv}<1->
-
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# Z
-# X
-
-# |Z+$\rangle$
-# |Z-$\rangle$
-\end{lstlisting}
-
+\begin{onlyenv}<1-1>
+Z \\
+X \\
+~\\
+|Z+$\rangle$ \\
+|Z-$\rangle$ \\
 \end{onlyenv}
 
 \begin{onlyenv}<2->
+\begin{center}
+\includegraphics[width=0.45\textwidth]{
+  slides/assets/Z.png
+}
+\includegraphics[width=0.45\textwidth]{
+  slides/assets/X.png
+} \\
+\vspace*{0.5cm}
+\includegraphics[width=0.35\textwidth]{
+  slides/assets/Zp.png
+}
+\includegraphics[width=0.35\textwidth]{
+  slides/assets/Zm.png
+}
+\end{center}
+\vspace*{0.1cm}
+\end{onlyenv}
 
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# X|Z+$\rangle$ = |Z-$\rangle$
-# false
-# true
-# true
-\end{lstlisting}
+\begin{onlyenv}<3-3>
+X|Z+$\rangle$ = |Z-$\rangle$ \\
+false \\
+true \\
+true
+\end{onlyenv}
 
+\begin{onlyenv}<4->
+\vspace*{0.3cm}
+\begin{center}
+\includegraphics[width=1.0\textwidth]{
+  slides/assets/XZp.png
+}
+\end{center}
+\vspace*{0.2cm}
 \end{onlyenv}
 
 \end{column}
