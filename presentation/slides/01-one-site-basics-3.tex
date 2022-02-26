@@ -1,29 +1,23 @@
 \begin{frame}[fragile]{Tutorial: One-site state basics}
 
-\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-using ITensorVisualizationBase: set_backend!
-\end{lstlisting}
-
 \begin{columns}
 
 \begin{column}{4.5cm}
 
-\begin{onlyenv}<2->
-
+\begin{onlyenv}<1->
+\vspace*{-1.0cm}
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-back = "UnicodePlots"
-set_backend!(back)
+using ITensorUnicodePlots
 
 @visualize dag(Zp) * Xp
 \end{lstlisting}
 
 \end{onlyenv}
 
-\begin{onlyenv}<3->
-
+\begin{onlyenv}<2->
+\vspace*{1.5cm}
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-back = "Makie"
-set_backend!(back)
+using ITensorGLMakie
 
 @visualize dag(Zp) * Xp
 \end{lstlisting}
@@ -34,18 +28,16 @@ set_backend!(back)
 
 \begin{column}{4.5cm}
 
-\begin{onlyenv}<2->
-
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# TODO: Add UnicodePlots visualization.
-\end{lstlisting}
-
+\begin{onlyenv}<1->
+\includegraphics[width=1.0\textwidth]{
+  slides/assets/ZpXp_unicode.png
+}
 \end{onlyenv}
 
-\begin{onlyenv}<3->
-
-\todo{Add GLMakie visualization.}
-
+\begin{onlyenv}<2->
+\includegraphics[width=1.0\textwidth]{
+  slides/assets/ZpXp_glmakie.png
+}
 \end{onlyenv}
 
 \end{column}

@@ -1,4 +1,4 @@
-\begin{frame}{What are tensor networks?}
+\begin{frame}[fragile]{What are tensor networks?}
 
 \begin{columns}
 
@@ -7,8 +7,8 @@
     Vector $V_i$ \\
     Order-1 tensor
     \begin{figure}[T]
-      \includegraphics[width=1.0\textwidth]{
-        slides/assets/what-are-tensor-networks-tensor-order-1.jpg
+      \includegraphics[width=0.3\textwidth]{
+        slides/assets/V.png
       }
     \end{figure}
   \end{column}
@@ -18,8 +18,8 @@
     Matrix $M_{ij}$ \\
     Order-2 tensor
     \begin{figure}[T]
-      \includegraphics[width=1.0\textwidth]{
-        slides/assets/what-are-tensor-networks-tensor-order-2.jpg
+      \includegraphics[width=0.5\textwidth]{
+        slides/assets/M.png
       }
     \end{figure}
   \end{column}
@@ -29,14 +29,89 @@
     Tensor $T_{ijk}$ \\
     Order-3 tensor
     \begin{figure}[T]
-      \includegraphics[width=1.0\textwidth]{
-        slides/assets/what-are-tensor-networks-tensor-order-3.jpg
+      \includegraphics[width=0.7\textwidth]{
+        slides/assets/T.png
       }
     \end{figure}
   \end{column}
 
 \end{columns}
 
-\todo{Add examples of matvec, matmul, trace}
+\vspace*{0.4cm}
+
+\begin{onlyenv}<2->
+
+\begin{columns}
+
+  \begin{column}[T]{0.33\textwidth}
+    \centering
+    Vector inner\\
+    product
+    \begin{figure}[T]
+      \includegraphics[width=0.7\textwidth]{
+        slides/assets/VV.png
+      }
+    \end{figure}
+  \end{column}
+
+  \begin{column}[T]{0.33\textwidth}
+    \centering
+    Matrix-vector\\
+    multiplication
+    \begin{figure}[T]
+      \includegraphics[width=0.8\textwidth]{
+        slides/assets/MV.png
+      }
+    \end{figure}
+  \end{column}
+
+  \begin{column}[T]{0.33\textwidth}
+    \centering
+    Matrix-matrix\\
+    multiplication
+    \begin{figure}[T]
+      \includegraphics[width=1.0\textwidth]{
+        slides/assets/MM.png
+      }
+    \end{figure}
+  \end{column}
+
+\end{columns}
+
+\end{onlyenv}
+
+\vspace*{0.4cm}
+
+\begin{onlyenv}<3->
+
+\centering
+
+\begin{columns}
+
+  \begin{column}[T]{0.5\textwidth}
+    \centering
+    Trace of matrix-matrix\\
+    multiplication
+    \begin{figure}[T]
+      \includegraphics[width=0.6\textwidth]{
+        slides/assets/trMM.png
+      }
+    \end{figure}
+  \end{column}
+
+  \begin{column}[T]{0.5\textwidth}
+    \centering
+    General tensor\\
+    network
+    \begin{figure}[T]
+      \includegraphics[width=0.6\textwidth]{
+        slides/assets/MTV.png
+      }
+    \end{figure}
+  \end{column}
+
+\end{columns}
+
+\end{onlyenv}
 
 \end{frame}
