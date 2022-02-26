@@ -14,13 +14,13 @@ i == j
 \end{onlyenv}
 
 \begin{onlyenv}<3->
-\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
 i = Index(2)
 
 prime(i)
 i'
-i == i'
-noprime(i')
+i $\neq$ i'
+noprime(i') == i
 \end{lstlisting}
 \end{onlyenv}
 
@@ -47,8 +47,8 @@ false \\
 ~\\
 (dim=2|id=837)' \\
 (dim=2|id=837)' \\
-false \\
-(dim=2|id=837)
+true \\
+true
 \end{onlyenv}
 
 \begin{onlyenv}<4->

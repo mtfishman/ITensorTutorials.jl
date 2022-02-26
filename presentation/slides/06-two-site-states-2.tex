@@ -5,7 +5,7 @@
 \begin{column}{5cm}
 
 \begin{onlyenv}<1->
-\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
 $\psi$ = ITensor(i1, i2)
 $\psi$[i1=>1, i2=>2] = 1/√2
 $\psi$[i1=>2, i2=>1] = 1/√2
@@ -16,7 +16,7 @@ $\psi$ = (Zp1 * Zm2 +
 \end{onlyenv}
 
 \begin{onlyenv}<3->
-\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
 inner($\psi$, $\psi$)
 inner(ZpZm, $\psi$)
 
@@ -43,7 +43,7 @@ From single-site states \\
 \begin{onlyenv}<2->
 \vspace*{0.0cm}
 \begin{center}
-\includegraphics[width=0.2\textwidth]{
+\includegraphics[width=1.0\textwidth]{
   slides/assets/cat12.png
 }
 \end{center}
@@ -51,6 +51,7 @@ From single-site states \\
 \end{onlyenv}
 
 \begin{onlyenv}<3-3>
+~\\
 $\approx$ 1 \\
 $\approx$ 1/√2 \\
 ~\\
@@ -64,10 +65,16 @@ $\approx$ [1/√2, 1/√2]
 \begin{onlyenv}<4->
 \vspace*{0.0cm}
 \begin{center}
-\includegraphics[width=0.2\textwidth]{
+\includegraphics[width=0.7\textwidth]{
   slides/assets/svd_ZpZm12.png
-} \\
-\includegraphics[width=0.2\textwidth]{
+}
+\end{center}
+\end{onlyenv}
+
+\begin{onlyenv}<5->
+~\\
+\begin{center}
+\includegraphics[width=0.7\textwidth]{
   slides/assets/svd_cat12.png
 }
 \end{center}
