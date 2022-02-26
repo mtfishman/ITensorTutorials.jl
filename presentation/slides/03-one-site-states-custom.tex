@@ -21,14 +21,12 @@ end
 \end{onlyenv}
 
 \begin{onlyenv}<2->
-
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
 iXm = state("iX-", i)
 
 inner(Zp, iXm)
 inner(Zm, iXm)
 \end{lstlisting}
-
 \end{onlyenv}
 
 \end{column}
@@ -36,29 +34,28 @@ inner(Zm, iXm)
 \begin{column}{4.5cm}
 
 \begin{onlyenv}<1->
+Overload ITensors.jl\\
+behavior\\[\baselineskip]
 
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# Overload ITensors.jl
-# behavior
-
-# Define a state with the
-# name ``iX-''
-
-
-
- \end{lstlisting}
-
+Define a state with the\\
+name ``iX-''\\
+~\\
+~\\
+~\\
+~\\
 \end{onlyenv}
 
-\begin{onlyenv}<2->
+\begin{onlyenv}<2-2>
+$\approx$ im * Xm \\
+~\\
+$\approx$ im/√2 \\
+$\approx$ -im/√2
+\end{onlyenv}
 
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# $\approx$ im * Xm
-
-# $\approx$ im/√2
-# $\approx$ -im/√2
-\end{lstlisting}
-
+\begin{onlyenv}<3>
+\includegraphics[width=1.0\textwidth]{
+  slides/assets/iXp.png
+}
 \end{onlyenv}
 
 \end{column}

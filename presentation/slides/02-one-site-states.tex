@@ -1,11 +1,10 @@
-\begin{frame}[fragile]{Tutorial: One-site state basics}
+\begin{frame}[fragile]{Tutorial: One-site states}
 
 \begin{columns}
 
 \begin{column}{4.5cm}
 
 \begin{onlyenv}<1->
-
   \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
   i = Index(2, "S=1/2")
 
@@ -13,7 +12,6 @@
 
 
   \end{lstlisting}
-
 \end{onlyenv}
 
 \begin{onlyenv}<2->
@@ -32,27 +30,22 @@ Xm = state("X-", i)
 \begin{column}{4.5cm}
 
 \begin{onlyenv}<1->
+``S=1/2'' defines an \\
+operator basis \\[\baselineskip]
 
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# ``S=1/2'' defines an
-# operator basis
-#
-# Additionally:
-# ``Qubit'', ``Qudit'',
-# ``Electron'', $\dots$
-\end{lstlisting}
-
+Additionally:\\
+``Qubit'', ``Qudit'',\\
+``Electron'', $\dots$
 \end{onlyenv}
 
 \begin{onlyenv}<2->
-
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# ITensor([1 0], i)
-# ITensor([0 1], i)
-# (Zp + Zm)/√2
-# (Zp - Zm)/√2
+\vspace*{0.6cm}
+\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
+ITensor([1 0], i)
+ITensor([0 1], i)
+(Zp + Zm)/√2
+(Zp - Zm)/√2
 \end{lstlisting}
-
 \end{onlyenv}
 
 \end{column}
