@@ -1,13 +1,10 @@
 \begin{frame}[fragile]{Tutorial: Two-site circuit optimization}
 
-\todo{Add visualization of minimizing <0|UHU|0>}
-
 \begin{columns}
 
 \begin{column}{5cm}
 
 \begin{onlyenv}<1->
-
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
 $\psi_0$ = Zp1 * Zp2
 
@@ -17,11 +14,9 @@ function E($\theta$)
   return inner($\psi_\theta$', H, $\psi_\theta$)
 end
 \end{lstlisting}
-
 \end{onlyenv}
 
-\begin{onlyenv}<2->
-
+\begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
 $\theta_0$ = [0, 0, 0, 0]
 $\theta$ = minimize(E, $\partial$E, $\theta_0$;
@@ -30,40 +25,54 @@ $\theta$ = minimize(E, $\partial$E, $\theta_0$;
 E($\theta_0$), norm($\partial$E($\theta_0$))
 E($\theta$), norm($\partial$E($\theta$))
  \end{lstlisting}
-
 \end{onlyenv}
 
 \end{column}
 
 \begin{column}{5cm}
 
-\begin{onlyenv}<1->
-
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# References state:
-# |0$\rangle$ = |Z+Z+$\rangle$
-
-# Find $\theta$ that minimizes:
-# E($\theta$) = $\langle$0|U($\theta$)$^\dagger$ H U($\theta$)|0$\rangle$
-#        = $\langle\theta$|H|$\theta\rangle$
- \end{lstlisting}
-
+\begin{onlyenv}<1-1>
+References state: \\
+|0$\rangle$ = |Z+Z+$\rangle$ \\
+~\\
+Find $\theta$ that minimizes: \\
+E($\theta$) = $\langle$0|U($\theta$)$^\dagger$ H U($\theta$)|0$\rangle$ \\
+       = $\langle\theta$|H|$\theta\rangle$ \\
+~\\
 \end{onlyenv}
 
 \begin{onlyenv}<2->
-
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-
-
-
-
-# (-1, √3/2)
-# (-1.4142077, 0.0017584116)
-#        $\approx$ (-√2, 0)
-\end{lstlisting}
-
+\vspace*{0.0cm}
+\begin{center}
+\includegraphics[width=0.2\textwidth]{
+  slides/assets/UZp1Zp2.png
+} \\
+\includegraphics[width=0.2\textwidth]{
+  slides/assets/theta12Htheta12.png
+}
+\end{center}
+\vspace*{0.0cm}
 \end{onlyenv}
 
+\begin{onlyenv}<3-3>
+~\\
+~\\
+~\\
+~\\
+(-1, √3/2) \\
+(-1.4142077, 0.0017584116) \\
+       $\approx$ (-√2, 0) \\
+\end{onlyenv}
+
+\begin{onlyenv}<4->
+\vspace*{0.0cm}
+\begin{center}
+\includegraphics[width=0.2\textwidth]{
+  slides/assets/min_grad_E_theta.png
+}
+\end{center}
+\vspace*{0.0cm}
+\end{onlyenv}
 \end{column}
 
 \end{columns}

@@ -1,13 +1,10 @@
 \begin{frame}[fragile]{Tutorial: Two-site circuit optimization}
 
-\todo{Add visualization of U}
-
 \begin{columns}
 
 \begin{column}{5cm}
 
 \begin{onlyenv}<1->
-
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
 # Circuit as a vector of gates:
 U($\theta$, i1, i2) = [
@@ -20,22 +17,13 @@ U($\theta$, i1, i2) = [
 
 
  \end{lstlisting}
-
 \end{onlyenv}
-
-%% \begin{onlyenv}<2->
-%% 
-%% \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-%% \end{lstlisting}
-%% 
-%% \end{onlyenv}
 
 \end{column}
 
 \begin{column}{5cm}
 
-\begin{onlyenv}<1->
-
+\begin{onlyenv}<2-2>
 \begin{lstlisting}[language=JuliaLocal, style=julia, numbers=none, mathescape, basicstyle=\small]
 # PastaQ notation:
 u($\theta$, j1, j2) = [
@@ -48,15 +36,17 @@ u($\theta$, j1, j2) = [
 U($\theta$, i1, i2) =
   buildcircuit(u($\theta$, 1, 2), [i1, i2])
 \end{lstlisting}
-
 \end{onlyenv}
 
-%% \begin{onlyenv}<2->
-%% 
-%% \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-%% \end{lstlisting}
-%% 
-%% \end{onlyenv}
+\begin{onlyenv}<3->
+\vspace*{0.0cm}
+\begin{center}
+\includegraphics[width=0.2\textwidth]{
+  slides/assets/U12.png
+}
+\end{center}
+\vspace*{0.0cm}
+\end{onlyenv}
 
 \end{column}
 

@@ -1,22 +1,17 @@
 \begin{frame}[fragile]{Tutorial: Custom two-site operators}
 
-\todo{Add visualization of CH|ZpZm>}
-
 \begin{columns}
 
 \begin{column}{5cm}
 
 \begin{onlyenv}<1->
-
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
 CH = op("CRy", i1, i2;
              $\theta$=$\pi$/2)
 \end{lstlisting}
-
 \end{onlyenv}
 
-\begin{onlyenv}<2->
-
+\begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
 ZpZm = Zp1 * Zm2
 
@@ -24,32 +19,43 @@ CH_Xm = apply(CH, ZpZm)
 
 CH_Xm $\approx$ Zp1 * Xm2
 \end{lstlisting}
-
 \end{onlyenv}
 
 \end{column}
 
 \begin{column}{5cm}
 
-\begin{onlyenv}<1->
-
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# Controlled-Hadamard gate
-# CH = CRy($\theta$=$\pi$/2)
-\end{lstlisting}
-
+\begin{onlyenv}<1-1>
+Controlled-Hadamard gate \\
+CH = CRy($\theta$=$\pi$/2)
 \end{onlyenv}
 
 \begin{onlyenv}<2->
+\vspace*{0.0cm}
+\begin{center}
+\includegraphics[width=0.2\textwidth]{
+  slides/assets/CH12.png
+}
+\end{center}
+\vspace*{0.0cm}
+\end{onlyenv}
 
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# |Z+Z-$\rangle$ = |Z+$\rangle_1$|Z-$\rangle_2$
+\begin{onlyenv}<3-3>
+|Z+Z-$\rangle$ = |Z+$\rangle_1$|Z-$\rangle_2$ \\
+~\\
+CH|Z+Z-$\rangle$ = |Z+X-$\rangle$ \\
+~\\
+true
+\end{onlyenv}
 
-# CH|Z+Z-$\rangle$ = |Z+X-$\rangle$
-
-# true
-\end{lstlisting}
-
+\begin{onlyenv}<4->
+\vspace*{0.0cm}
+\begin{center}
+\includegraphics[width=0.2\textwidth]{
+  slides/assets/Zp1Xp2CHZp1Zp2.png
+}
+\end{center}
+\vspace*{0.0cm}
 \end{onlyenv}
 
 \end{column}
