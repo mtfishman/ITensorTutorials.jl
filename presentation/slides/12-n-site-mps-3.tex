@@ -1,47 +1,43 @@
-\begin{frame}[fragile]{Tutorial: n-site operators with MPO}
+\begin{frame}[fragile]{Tutorial: n-site states with MPS}
 
 \begin{columns}
 
-\begin{column}{5cm}
+\begin{column}{6cm}
 
 \begin{onlyenv}<1->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-function ising(n; h)
-  H = OpSum()
-  for j in 1:(n - 1)
-    H -= "Z", j, "Z", j + 1
-  end
-  for j in 1:n
-    H += h, "X", j
-  end
-  return H
-end
+  j = n ÷ 2
+  X$_j$ = op("X", i[j])
+
+  X$_j$Zp = apply(X$_j$, Zp)
+
+
+  state = [k == j ? "Z-" : "Z+"
+             for k in 1:n]
+  X$_j$Zp = MPS(i, state)
 \end{lstlisting}
 \end{onlyenv}
 
 \begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-h = 0.5
-H = MPO(ising(n; h=h), i)
-maxlinkdim(H)
-Zp = MPS(i, "Z+")
-inner(Zp', H, Zp)
- \end{lstlisting}
+  maxlinkdim(X$_j$Zp)
+  inner(Zp, X$_j$Zp)
+  inner(X$_j$Zp, apply(X$_j$, Zp))
+\end{lstlisting}
 \end{onlyenv}
 
 \end{column}
 
-\begin{column}{5.5cm}
+\begin{column}{4cm}
 
 \begin{onlyenv}<1-1>
-n sites \\
-$H = -\sum_j^{n-1} Z_j Z_{j+1} + h \sum_j^n X_j$ \\
+$j = n/2$ \\
+$X_j$ \\
 ~\\
+$X_j|Z+Z+\dots Z+$\rangle$ = \\
+    |Z+Z+\dots Z-\dits Z+\rangle$ \\
 ~\\
-~\\
-~\\
-~\\
-~\\
+$|Z+Z+\dots Z-\dots Z+\rangle$ \\
 ~\\
 ~\\
 \end{onlyenv}
@@ -49,14 +45,8 @@ $H = -\sum_j^{n-1} Z_j Z_{j+1} + h \sum_j^n X_j$ \\
 \begin{onlyenv}<2->
 \vspace*{0.0cm}
 \begin{center}
-\includegraphics[width=0.2\textwidth]{
-  slides/assets/isingn.png
-}
-\includegraphics[width=0.2\textwidth]{
-  slides/assets/isingn_mpo.png
-}
-\includegraphics[width=0.2\textwidth]{
-  slides/assets/Zpn_H_Zpn.png
+\includegraphics[width=1.0\textwidth]{
+  slides/assets/XjZpn.png
 }
 \end{center}
 \vspace*{0.0cm}
@@ -65,10 +55,9 @@ $H = -\sum_j^{n-1} Z_j Z_{j+1} + h \sum_j^n X_j$ \\
 \begin{onlyenv}<3->
 ~\\
 ~\\
-= 3 (local Hamiltonian) \\
-~\\
-$\langle$Z+Z+…Z+|H|Z+Z+…Z+$\rangle$ \\
-  $\approx$ -(n - 1) = -29
+1 (product state) \\
+$\approx$ 0 \\
+$\approx$ 1
 \end{onlyenv}
 
 \end{column}

@@ -1,28 +1,31 @@
-\begin{frame}[fragile]{Tutorial: n-site circuit optimization}
-
-\begin{onlyenv}<1->
-\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-Ry_layer($\theta$, i) = [op("Ry", i[j]; $\theta$=$\theta$[j]) for j in 1:n]
-CX_layer(i) = [op("CX", i[j], i[j+1]) for j in 1:2:(n-1)]
-\end{lstlisting}
-\end{onlyenv}
+\begin{frame}[fragile]{Tutorial: n-site state optimization}
 
 \begin{columns}
 
 \begin{column}{5cm}
 
-\begin{onlyenv}<2->
+\begin{onlyenv}<1->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-function U($\theta$, i; nlayers)
-  n = length(i)
-  U$_\theta$ = Ry_layer($\theta$[1:n], i)
-  for l in 1:(nlayers - 1)
-    $\theta_l$ = $\theta$[(1:n) .+ l * n]
-    U$_\theta$ = [U$_\theta$; CX_layer(i)]
-    U$_\theta$ = [U$_\theta$; Ry_layer($\theta_l$, i)]
-  end
-  return U$_\theta$
-end
+$\psi_0$ = MPS(i, "Z+")
+
+$\psi$ = minimize(E, $\partial$E, $\psi_0$;
+      nsteps=50, $\gamma$=0.1,
+      maxdim=10, cutoff=1e-5)
+
+E$_{dmrg}$, $\psi_{dmrg}$ = dmrg(H, $\psi_0$;
+      nsweeps=10,
+      maxdim=10, cutoff=1e-5)
+\end{lstlisting}
+\end{onlyenv}
+
+\begin{onlyenv}<3->
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+maxlinkdim($\psi_0$)
+maxlinkdim($\psi$)
+maxlinkdim($\psi_{dmrg}$)
+E($\psi_0$), norm($\partial$($\psi_0$))
+E($\psi$), norm($\partial$E($\psi$))
+E($\psi_{dmrg}$), norm($\partial$E($\psi_{dmrg}$))
 \end{lstlisting}
 \end{onlyenv}
 
@@ -30,27 +33,38 @@ end
 
 \begin{column}{5.5cm}
 
-\begin{onlyenv}<2-2>
-U($\theta$) = Ry$_1(\theta_1)$ … Ry$_n(\theta_n)$ \\
-\ \ *           CX$_{1,2}$ … CX$_{n-1,n}$ \\
-\ \ *          Ry$_1(\theta_{n+1})$ … Ry$_n(\theta_{2n})$ \\
-\ \ *           …
+\begin{onlyenv}<1-1>
+|0$\rangle$ = |Z+Z+…Z+$\rangle$ \\
+~\\
+Minimize over $\psi$: \\
+$\langle\psi$|H|$\psi\rangle$/$\langle\psi$|$\psi\rangle$ \\
 ~\\
 ~\\
-~\\
-~\\
-~\\
+DMRG solves: \\
+H|$\psi\rangle$ $\approx$ |$\psi\rangle$ \\
 ~\\
 \end{onlyenv}
 
-\begin{onlyenv}<3->
+\begin{onlyenv}<2->
 \vspace*{0.0cm}
 \begin{center}
-\includegraphics[width=\textwidth]{
-  slides/assets/Un.png
+\includegraphics[width=0.2\textwidth]{
+  slides/assets/psin_H_psin.png
+} \\
+\includegraphics[width=0.2\textwidth]{
+  slides/assets/min_grad_E_psi.png
 }
 \end{center}
 \vspace*{0.0cm}
+\end{onlyenv}
+
+\begin{onlyenv}<3->
+= 1 (product state) \\
+= 3 (entangled state) \\
+= 2 (entangled state) \\
+$\approx$ (-29, 5.4772256) \\
+$\approx$ (-31.0317917, 0.06673780) \\
+$\approx$ (-31.0356110, 0.02413237)
 \end{onlyenv}
 
 \end{column}

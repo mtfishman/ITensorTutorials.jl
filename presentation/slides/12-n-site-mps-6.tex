@@ -1,46 +1,41 @@
-\begin{frame}[fragile]{Tutorial: n-site states with MPS}
-
-\begin{columns}
-
-\begin{column}{5.5cm}
+\begin{frame}[fragile]{Tutorial: n-site circuit optimization}
 
 \begin{onlyenv}<1->
-%% Definition of $\psi_\theta$, not enough space to include in slide.
-%% $\psi_\theta$ = apply(U($\theta$, i; nlayers=nlayers), $\psi_0$;
-%%            maxdim=maxdim, cutoff=cutoff)
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-$\psi_0$ = MPS(i, "Z+")
-nlayers = 6
-function E($\theta$)
-  $\psi_\theta$ = apply(U($\theta$, i; nlayers), $\psi_0$)
-  return inner($\psi_\theta$', H, $\psi_\theta$)
-end
-
-$\theta_0$ = zeros(nlayers * n)
-$\theta$ = minimize(E, $\partial$E, $\theta_0$;
-      nsteps=20, $\gamma$=0.1)
+Ry_layer($\theta$, i) = [op("Ry", i[j]; $\theta$=$\theta$[j]) for j in 1:n]
+CX_layer(i) = [op("CX", i[j], i[j+1]) for j in 1:2:(n-1)]
 \end{lstlisting}
 \end{onlyenv}
 
-\begin{onlyenv}<3->
+\begin{columns}
+
+\begin{column}{5cm}
+
+\begin{onlyenv}<2->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-maxlinkdim($\psi_0$)
-maxlinkdim($\psi_\theta$)
-E($\theta_0$), norm($\partial$E($\theta_0$))
-E($\theta$), norm($\partial$E($\theta$))
+function U($\theta$, i; nlayers)
+  n = length(i)
+  U$_\theta$ = Ry_layer($\theta$[1:n], i)
+  for l in 1:(nlayers - 1)
+    $\theta_l$ = $\theta$[(1:n) .+ l * n]
+    U$_\theta$ = [U$_\theta$; CX_layer(i)]
+    U$_\theta$ = [U$_\theta$; Ry_layer($\theta_l$, i)]
+  end
+  return U$_\theta$
+end
 \end{lstlisting}
 \end{onlyenv}
 
 \end{column}
 
-\begin{column}{4.5cm}
+\begin{column}{5.5cm}
 
-\begin{onlyenv}<1-1>
-|0$\rangle$ = |Z+Z+…Z+$\rangle$ \\
+\begin{onlyenv}<2-2>
+U($\theta$) = Ry$_1(\theta_1)$ … Ry$_n(\theta_n)$ \\
+\ \ *           CX$_{1,2}$ … CX$_{n-1,n}$ \\
+\ \ *          Ry$_1(\theta_{n+1})$ … Ry$_n(\theta_{2n})$ \\
+\ \ *           …
 ~\\
-Minimize over $\theta$: \\
-|$\theta\rangle$ = U($\theta$)|0$\rangle$ \\
-E($\theta$) = $\langle\theta$|H|$\theta\rangle$ \\
 ~\\
 ~\\
 ~\\
@@ -48,31 +43,11 @@ E($\theta$) = $\langle\theta$|H|$\theta\rangle$ \\
 ~\\
 \end{onlyenv}
 
-\begin{onlyenv}<2->
+\begin{onlyenv}<3->
 \vspace*{0.0cm}
 \begin{center}
 \includegraphics[width=\textwidth]{
-  slides/assets/U_Zpn.png
-}
-\end{center}
-\vspace*{0.0cm}
-\end{onlyenv}
-
-\begin{onlyenv}<3-3>
-1 (product state) \\
-2 (entangled state) \\
-(-29, 5.773335) \\
-(-31.017062, 0.000759)
-\end{onlyenv}
-
-\begin{onlyenv}<4->
-\vspace*{0.0cm}
-\begin{center}
-\includegraphics[width=\textwidth]{
-  slides/assets/thetan_H_thetan.png
-} \\
-\includegraphics[width=\textwidth]{
-  slides/assets/min_grad_E_theta.png
+  slides/assets/Un.png
 }
 \end{center}
 \vspace*{0.0cm}

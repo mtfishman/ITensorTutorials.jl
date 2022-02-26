@@ -1,4 +1,4 @@
-\begin{frame}[fragile]{Tutorial: n-site state optimization}
+\begin{frame}[fragile]{Tutorial: n-site operators with MPO}
 
 \begin{columns}
 
@@ -6,27 +6,27 @@
 
 \begin{onlyenv}<1->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-$\psi_0$ = MPS(i, "Z+")
-
-$\psi$ = minimize(E, $\partial$E, $\psi_0$;
-      nsteps=50, $\gamma$=0.1,
-      maxdim=10, cutoff=1e-5)
-
-E$_{dmrg}$, $\psi_{dmrg}$ = dmrg(H, $\psi_0$;
-      nsweeps=10,
-      maxdim=10, cutoff=1e-5)
+function ising(n; h)
+  H = OpSum()
+  for j in 1:(n - 1)
+    H -= "Z", j, "Z", j + 1
+  end
+  for j in 1:n
+    H += h, "X", j
+  end
+  return H
+end
 \end{lstlisting}
 \end{onlyenv}
 
 \begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-maxlinkdim($\psi_0$)
-maxlinkdim($\psi$)
-maxlinkdim($\psi_{dmrg}$)
-E($\psi_0$), norm($\partial$($\psi_0$))
-E($\psi$), norm($\partial$E($\psi$))
-E($\psi_{dmrg}$), norm($\partial$E($\psi_{dmrg}$))
-\end{lstlisting}
+h = 0.5
+H = MPO(ising(n; h=h), i)
+maxlinkdim(H)
+Zp = MPS(i, "Z+")
+inner(Zp', H, Zp)
+ \end{lstlisting}
 \end{onlyenv}
 
 \end{column}
@@ -34,14 +34,15 @@ E($\psi_{dmrg}$), norm($\partial$E($\psi_{dmrg}$))
 \begin{column}{5.5cm}
 
 \begin{onlyenv}<1-1>
-|0$\rangle$ = |Z+Z+…Z+$\rangle$ \\
-~\\
-Minimize over $\psi$: \\
-$\langle\psi$|H|$\psi\rangle$/$\langle\psi$|$\psi\rangle$ \\
+$n$ sites \\
+$H = -\sum_j^{n-1} Z_j Z_{j+1} + h \sum_j^n X_j$ \\
 ~\\
 ~\\
-DMRG solves: \\
-H|$\psi\rangle$ $\approx$ |$\psi\rangle$ \\
+~\\
+~\\
+~\\
+~\\
+~\\
 ~\\
 \end{onlyenv}
 
@@ -49,22 +50,25 @@ H|$\psi\rangle$ $\approx$ |$\psi\rangle$ \\
 \vspace*{0.0cm}
 \begin{center}
 \includegraphics[width=0.2\textwidth]{
-  slides/assets/psin_H_psin.png
-} \\
+  slides/assets/isingn.png
+}
 \includegraphics[width=0.2\textwidth]{
-  slides/assets/min_grad_E_psi.png
+  slides/assets/isingn_mpo.png
+}
+\includegraphics[width=0.2\textwidth]{
+  slides/assets/Zpn_H_Zpn.png
 }
 \end{center}
 \vspace*{0.0cm}
 \end{onlyenv}
 
 \begin{onlyenv}<3->
-= 1 (product state) \\
-= 3 (entangled state) \\
-= 2 (entangled state) \\
-$\approx$ (-29, 5.4772256) \\
-$\approx$ (-31.0317917, 0.06673780) \\
-$\approx$ (-31.0356110, 0.02413237)
+~\\
+~\\
+= 3 (local Hamiltonian) \\
+~\\
+$\langle$Z+Z+…Z+|H|Z+Z+…Z+$\rangle$ \\
+  $\approx$ -(n - 1) = -29
 \end{onlyenv}
 
 \end{column}
