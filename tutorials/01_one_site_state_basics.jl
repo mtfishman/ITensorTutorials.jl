@@ -1,6 +1,3 @@
-# TODO: remove once changes are merged
-include(joinpath("src", "patches.jl"))
-
 using ITensors
 
 # Text visualization, prints to screen
@@ -8,6 +5,8 @@ using ITensorUnicodePlots
 
 # Visualization in an interactive window
 using ITensorGLMakie
+
+using LinearAlgebra
 
 ITensorVisualizationBase.set_backend!("UnicodePlots")
 
@@ -19,10 +18,7 @@ println("
 #######################################################
 ")
 
-#space = [QN("P", 1, 2) => 1, QN("P", 0, 2) => 1]
-space = 2
-
-i = Index(space)
+i = Index(2)
 
 #
 # Making states

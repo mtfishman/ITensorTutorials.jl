@@ -11,7 +11,7 @@ println("
 # "S=1/2" defines a state and operator basis:
 # a set of predefined states and operators.
 # Additionally: "Qubit", "Qudit", "Fermion", "Electron", etc.
-i = Index(space, "S=1/2")
+i = Index(2, "S=1/2")
 
 # Same as before
 Zp = ITensor([1 0], i)

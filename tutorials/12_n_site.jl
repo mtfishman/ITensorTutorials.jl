@@ -10,7 +10,7 @@ println("
 
 # Beyond full state, use approximations
 n = 30
-i = [Index(space, "S=1/2") for j in 1:n]
+i = [Index(2, "S=1/2") for j in 1:n]
 
 # Product state |Z+Z+Z+…Z+⟩
 Zp = MPS(i, "Z+")
@@ -89,7 +89,7 @@ end
 # ψ /= norm(ψ)
 ψ *= inv(norm(ψ))
 
-Eᵈᵐʳᵍ, ψᵈᵐʳᵍ = dmrg(H, ψ⁰; nsweep=10, maxdim=10, cutoff=1e-5)
+Eᵈᵐʳᵍ, ψᵈᵐʳᵍ = dmrg(H, ψ⁰; nsweeps=10, maxdim=10, cutoff=1e-5)
 
 @show maxlinkdim(ψ⁰)
 @show maxlinkdim(ψ)

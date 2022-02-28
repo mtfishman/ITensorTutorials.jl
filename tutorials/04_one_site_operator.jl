@@ -91,6 +91,8 @@ XZp = apply(X, Zp)
 
 @visualize dag(Zm)' * X * Zp
 
+@visualize dag(Zm)' * X * Zp backend="Makie"
+
 @show inner(Zp', X, Zm)
 
 @visualize dag(Zp)' * X * Zm
