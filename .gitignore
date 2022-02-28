@@ -2,6 +2,7 @@
 *.jl.cov
 *.jl.mem
 *.o
+*.so
 *.swp
 .~lock.*
 .DS_Store
