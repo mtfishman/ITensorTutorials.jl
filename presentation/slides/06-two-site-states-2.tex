@@ -17,8 +17,8 @@ $\psi$ = (Zp1 * Zm2 +
 
 \begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-inner($\psi$, $\psi$)
 inner(ZpZm, $\psi$)
+
 
 U, S, V = svd(ZmZp, i1)
 s = diag(S)

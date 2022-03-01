@@ -19,12 +19,13 @@ end
 \begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
 $\theta_0$ = [0, 0, 0, 0]
+$\partial$E($\theta$) = gradient(E, $\theta$)[1]
 $\theta$ = minimize(E, $\partial$E, $\theta_0$;
         nsteps=40, $\gamma$=0.5)
 
-E($\theta_0$), norm($\partial$E($\theta_0$))
-E($\theta$), norm($\partial$E($\theta$))
- \end{lstlisting}
+E($\theta_0$) == -1
+E($\theta$) == -1.4142077 $\approx$ -√2
+\end{lstlisting}
 \end{onlyenv}
 
 \end{column}
@@ -35,10 +36,9 @@ E($\theta$), norm($\partial$E($\theta$))
 References state: \\
 |0$\rangle$ = |Z+Z+$\rangle$ \\
 ~\\
-Find $\theta$ that minimizes: \\
-E($\theta$) = $\langle$0|U($\theta$)$^\dagger$ H U($\theta$)|0$\rangle$ \\
-\ \ \ \ \ \ \ = $\langle\theta$|H|$\theta\rangle$ \\
-~\\
+$\min_{\theta}$ E($\theta$)\\
+\ \ = $\min_{\theta}$ $\langle$0|U($\theta$)$^\dagger$ H U($\theta$)|0$\rangle$ \\
+\ \ = $\min_{\theta}$ $\langle\theta$|H|$\theta\rangle$ \\
 \end{onlyenv}
 
 \begin{onlyenv}<2->
@@ -54,27 +54,17 @@ E($\theta$) = $\langle$0|U($\theta$)$^\dagger$ H U($\theta$)|0$\rangle$ \\
 \vspace*{0.0cm}
 \end{onlyenv}
 
-\begin{onlyenv}<3-3>
+\begin{onlyenv}<3->
 \vspace*{0.0cm}
-~\\
-~\\
-~\\
 \begin{center}
 \includegraphics[width=1.0\textwidth]{
   slides/assets/min_grad_E_theta.png
 }
 \end{center}
+%% (-1, √3/2) \\
+%% (-1.4142077, 0.0017584116) \\
+%%        $\approx$ (-√2, 0) \\
 \vspace*{0.0cm}
-\end{onlyenv}
-
-\begin{onlyenv}<4->
-~\\
-~\\
-~\\
-~\\
-(-1, √3/2) \\
-(-1.4142077, 0.0017584116) \\
-       $\approx$ (-√2, 0) \\
 \end{onlyenv}
 
 \end{column}

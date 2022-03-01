@@ -6,22 +6,21 @@
 
 \begin{onlyenv}<1->
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-XZp = X * Zp
-
-dag(Zm) * XZp
-
-dag(Zm') * XZp
-dag(Zp') * XZp
-
 dag(Zm)' * X * Zp
+
 inner(Zm', X, Zp)
 \end{lstlisting}
 \end{onlyenv}
 
 \begin{onlyenv}<3->
+~\\
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-XZp = apply(X, Zp)
-inner(Zm, XZp)
+apply(X, Zp) == 
+  noprime(X * Zp)
+
+
+
+inner(Zm, apply(X, Zp))
 \end{lstlisting}
 \end{onlyenv}
 
@@ -30,53 +29,42 @@ inner(Zm, XZp)
 \begin{column}{4.5cm}
 
 \begin{onlyenv}<1-1>
-\vspace*{-0.2cm}
-X|Z+$\rangle$ = |Z-$\rangle$ \\
-~\\
-$|Z-\rangle\langle Z+|X$ \\
-~\\
+%\vspace*{-0.2cm}
 $\langle Z-|X|Z+\rangle \approx 1$ \\
-$\langle Z+|X|Z+\rangle \approx 0$ \\
+\end{onlyenv}
+
+\begin{onlyenv}<3->
 ~\\
-$\langle Z-|X|Z+\rangle \approx 1$ \\
-$\langle Z-|X|Z+\rangle \approx 1$
+~\\
 \end{onlyenv}
 
 \begin{onlyenv}<2->
 \vspace*{-0.2cm}
 \begin{center}
 \includegraphics[width=0.7\textwidth]{
-  slides/assets/XZp.png
-} \\
-~\\
-\includegraphics[width=0.5\textwidth]{
-  slides/assets/outer_XZp_Zm.png
-}
-=
-\includegraphics[width=0.35\textwidth]{
-  slides/assets/outer_Zm_Zm.png
-} \\
-~\\
-~\\
-\includegraphics[width=0.7\textwidth]{
   slides/assets/ZmXZp.png
-} \\
-\includegraphics[width=0.7\textwidth]{
-  slides/assets/ZpXZp.png
 }
 \end{center}
 \vspace*{0.0cm}
 \end{onlyenv}
 
 \begin{onlyenv}<3-3>
-= noprime(X * Zp) \\
-$\approx$ 1 \\
+\vspace*{0.1cm}
+~\\
+~\\
+$X|Z+\rangle$ \\
+~\\
+~\\
+~\\
+$\langle Z-|X|Z+\rangle \approx 1$ \\
+~\\
 \end{onlyenv}
 
 \begin{onlyenv}<4->
-\vspace*{0.0cm}
+\vspace*{0.2cm}
+~\\
 \begin{center}
-\includegraphics[width=0.7\textwidth]{
+\includegraphics[width=1.0\textwidth]{
   slides/assets/apply_XZp.png
 }
 \end{center}

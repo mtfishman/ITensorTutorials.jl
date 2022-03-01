@@ -8,11 +8,7 @@
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
 ZpZp = Zp1 * Zp2
 
-
-
-(dag(ZpZp)' * H * ZpZp)[]
 inner(ZpZp', H, ZpZp)
-inner(ZpZp, apply(H, ZpZp))
 \end{lstlisting}
 \end{onlyenv}
 
@@ -28,12 +24,9 @@ diag(D)
 \begin{column}{5cm}
 
 \begin{onlyenv}<1-1>
-Expectation value: \\
+~\\
+~\\
 $\langle$H$\rangle$ = $\langle$Z+Z+|H|Z+Z+$\rangle$ \\
-~\\
-~\\
-~\\
-$\approx$ -1 \\
 \end{onlyenv}
 
 \begin{onlyenv}<2-3>
@@ -47,8 +40,6 @@ $\approx$ -1 \\
 \end{onlyenv}
 
 \begin{onlyenv}<3-3>
-~\\
-~\\
 ~\\
 $\approx$ [-√2, -1, 1, √2]
 \end{onlyenv}

@@ -21,14 +21,15 @@ end
 \begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
 $\theta_0$ = [0, 0, 0, 0]
+$\partial$F($\theta$) = gradient(F, $\theta$)[1]
 $\theta$ = minimize(F, $\partial$F, $\theta_0$;
         nsteps=50, $\gamma$=0.1)
 
-F($\theta_0$), norm($\partial$F($\theta_0$))
-F($\theta$), norm($\partial$F($\theta$))
- \end{lstlisting}
-
+F($\theta_0$) == -0.5
+F($\theta$) == -0.9938992 $\approx$ -1
+\end{lstlisting}
 \end{onlyenv}
+
 \end{column}
 
 \begin{column}{5cm}
@@ -40,8 +41,8 @@ Reference state: \\
 Target state: \\
 |$\psi\rangle$ = (|Z+Z+$\rangle$ + |Z-Z-$\rangle$)/√2 \\
 ~\\
-Find $\theta$ that minimizes: \\
-F($\theta$) = -|$\langle\psi$|U($\theta$)|0$\rangle$|$^2$
+$\min_{\theta}$ F($\theta$) = \\
+\ \ \ \ \ \ $\min_{\theta}$ -|$\langle\psi$|U($\theta$)|0$\rangle$|$^2$
 \end{onlyenv}
 
 \begin{onlyenv}<2->
@@ -57,11 +58,8 @@ F($\theta$) = -|$\langle\psi$|U($\theta$)|0$\rangle$|$^2$
 \vspace*{0.0cm}
 \end{onlyenv}
 
-\begin{onlyenv}<3-3>
+\begin{onlyenv}<3->
 \vspace*{0.0cm}
-~\\
-~\\
-~\\
 \begin{center}
 \includegraphics[width=1.0\textwidth]{
   slides/assets/min_grad_F_theta.png
@@ -70,15 +68,15 @@ F($\theta$) = -|$\langle\psi$|U($\theta$)|0$\rangle$|$^2$
 \vspace*{0.0cm}
 \end{onlyenv}
 
-\begin{onlyenv}<4->
-~\\
-~\\
-~\\
-~\\
-$\approx$ (-0.5, 0.5) \\
-$\approx$ (-0.9938992, 0.07786879) \\
-    $\approx$ (-1, 0)
-\end{onlyenv}
+%% \begin{onlyenv}<4->
+%% ~\\
+%% ~\\
+%% ~\\
+%% ~\\
+%% $\approx$ (-0.5, 0.5) \\
+%% $\approx$ (-0.9938992, 0.07786879) \\
+%%     $\approx$ (-1, 0)
+%% \end{onlyenv}
 
 \end{column}
 
