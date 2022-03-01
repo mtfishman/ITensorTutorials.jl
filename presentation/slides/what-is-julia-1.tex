@@ -1,21 +1,22 @@
-\begin{frame}{What is Julia?}
-
-\begin{figure}[T]
-  \includegraphics[width=0.3\textwidth]{
-    slides/assets/what-is-itensor-julia.jpg
-  }
-\end{figure}
+\begin{frame}{Porting to Julia}
 
 \begin{itemize}[<+->]
 
-  \item Started in 2009 at MIT, v0.1 released in 2013, v1 released in 2018.
-  \item Language is very stable, ecosystem is growing very quickly.
-  \item Fast like C/C++, high level features of Python, all in one language.
-  \item Just-in-time compiled, garbage collected, package manager, plotting, great numerical libraries, etc.
-  \item Julia is great, you should use it.
-  \item I could say more, ask me about it.
-  \item Find out more at: \myhref{https://julialang.org/}{julialang.org}.
+  \item Porting the full ITensor library took about 1$\frac{1}{2}$ years.
+  \item Much less code, easier development.
+  \item Now that it is ported, we have many more features: GPU, autodiff, infinite MPS, visualization, etc.
+  \item Great numerical libraries, code ended up faster.
 
 \end{itemize}
+
+\begin{onlyenv}<4->
+
+\begin{figure}[T]
+  \includegraphics[width=0.7\textwidth]{
+    slides/assets/what-is-julia-itensor-benchmark.jpg
+  }
+\end{figure}
+
+\end{onlyenv}
 
 \end{frame}

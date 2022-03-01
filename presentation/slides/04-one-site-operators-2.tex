@@ -16,10 +16,10 @@ Zm = state("Z-", i)
 
 \begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-XZp = X * Zp
-XZp == Zm
-XZp == Zm'
-noprime(XZp) == Zm
+X * Zp == Zm'
+
+
+noprime(X * Zp) == Zm
 \end{lstlisting}
 \end{onlyenv}
 
@@ -39,14 +39,14 @@ X \\
 \begin{center}
 \includegraphics[width=0.45\textwidth]{
   slides/assets/Z.png
-}
+} \
 \includegraphics[width=0.45\textwidth]{
   slides/assets/X.png
 } \\
 \vspace*{0.5cm}
 \includegraphics[width=0.35\textwidth]{
   slides/assets/Zp.png
-}
+} \ \ \ \ 
 \includegraphics[width=0.35\textwidth]{
   slides/assets/Zm.png
 }
@@ -56,9 +56,9 @@ X \\
 
 \begin{onlyenv}<3-3>
 X|Z+$\rangle$ = |Z-$\rangle$ \\
-false \\
-true \\
-true
+~\\
+~\\
+~\\
 \end{onlyenv}
 
 \begin{onlyenv}<4->

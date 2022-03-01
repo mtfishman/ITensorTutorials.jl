@@ -2,14 +2,19 @@
 
 \begin{itemize}[<+->]
 
-  \item In my opinion, tensor networks are the best general purpose tool we have right now for studying quantum many-body systems (while we wait for a general purpose quantum computer).
+  \item Good for many sites or qubits but limited to shorter times/circuit depths (though better with noise).
+  \item Best when local gate structure or interactions match the graph structure of the tensor network.
+  \item If you need very long time evolution/many layers but few qubits, use full state simulation.
+    
+  \begin{itemize}[<+->]
+
+    \item ITensor and PastaQ handle this seamlessly.
+    \item This is not the focus of ITensor and PastaQ at the moment, specialized libraries like \myhref{https://github.com/QuantumBFS/Yao.jl}{Yao.jl} may be faster.
+
+  \end{itemize}
+
+  \item Tensor networks are a common, general language for reasoning about quantum many-body systems (for example, quantum circuits).
 
 \end{itemize}
-
-\begin{figure}[T]
-  \includegraphics[width=0.7\textwidth]{
-    slides/assets/when-tensor-networks-quantum-volume.jpg
-  }
-\end{figure}
 
 \end{frame}

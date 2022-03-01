@@ -5,11 +5,11 @@
 \begin{column}{4.5cm}
 
 \begin{onlyenv}<1->
-\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
 i = Index(2)
 j = Index(2)
 
-i == j
+i $\neq$ j
 \end{lstlisting}
 \end{onlyenv}
 
@@ -17,8 +17,8 @@ i == j
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
 i = Index(2)
 
-prime(i)
-i'
+prime(i) == i'
+
 i $\neq$ i'
 noprime(i') == i
 \end{lstlisting}
@@ -29,29 +29,35 @@ noprime(i') == i
 \begin{column}{4.5cm}
 
 \begin{onlyenv}<1-1>
+\vspace*{0.05cm}
 (dim=2|id=837) \\
 (dim=2|id=899) \\
 ~\\
-false \\
+~\\
 \end{onlyenv}
 
 \begin{onlyenv}<2->
+\begin{center}
 \includegraphics[width=0.8\textwidth]{
   slides/assets/i_neq_j.png
 }
-\vspace*{1.0cm}
+\end{center}
 \end{onlyenv}
 
 \begin{onlyenv}<3-3>
+~\\
+~\\
 (dim=2|id=837) \\
 ~\\
 (dim=2|id=837)' \\
-(dim=2|id=837)' \\
-true \\
-true
+~\\
+~\\
+~\\
+~\\
 \end{onlyenv}
 
 \begin{onlyenv}<4->
+~\\
 \begin{center}
 \includegraphics[width=0.2\textwidth]{
   slides/assets/i.png

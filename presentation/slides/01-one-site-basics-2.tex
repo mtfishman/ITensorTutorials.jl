@@ -16,7 +16,7 @@ Xm = ITensor([1, -1]/√2, i)
 \begin{column}[T]{0.6\textwidth}
 \begin{onlyenv}<1-1>
 $|Z+\rangle = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$,
-  $|Z-\rangle = \begin{bmatrix} 0 \\ 1 \end{bmatrix}$ \\
+\ \ \ \ \ \ \  $|Z-\rangle = \begin{bmatrix} 0 \\ 1 \end{bmatrix}$ \\
 $|X+\rangle = \begin{bmatrix} 1 \\ 1 \end{bmatrix}/\sqrt{2}$,
   $|X-\rangle = \begin{bmatrix} 1 \\ -1 \end{bmatrix}/\sqrt{2}$
 \end{onlyenv}
@@ -26,13 +26,13 @@ $|X+\rangle = \begin{bmatrix} 1 \\ 1 \end{bmatrix}/\sqrt{2}$,
 \begin{center}
 \includegraphics[width=0.3\textwidth]{
   slides/assets/Zp.png
-}
+} \ \ \ \ \ \ \ 
 \includegraphics[width=0.3\textwidth]{
   slides/assets/Zm.png
 } \\
 \includegraphics[width=0.3\textwidth]{
   slides/assets/Xp.png
-}
+} \ \ \ \ \ \ \ 
 \includegraphics[width=0.3\textwidth]{
   slides/assets/Xm.png
 }
@@ -46,31 +46,40 @@ $|X+\rangle = \begin{bmatrix} 1 \\ 1 \end{bmatrix}/\sqrt{2}$,
 
 \begin{column}[T]{0.45\textwidth}
 \begin{onlyenv}<3->
+~\\
+~\\
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-(Zp + Zm)/√2
+Xp = (Zp + Zm)/√2
+
+
+
 dag(Zp) * Xp
-(dag(Zp) * Xp)[]
 inner(Zp, Xp)
-norm(Xp)
 \end{lstlisting}
 \end{onlyenv}
 \end{column}
 
 \begin{column}[T]{0.6\textwidth}
 \begin{onlyenv}<3-3>
-$\approx$ Xp \\
-$\approx$ ITensor(1/√2) \\
-$\approx$ 1/√2 \\
-$\approx$ 1/√2 \\
-$\approx$ 1
+~\\
+~\\
+~\\
+$|X+\rangle = (|Z+\rangle + |Z-\rangle)/\sqrt{2}$ \\
+~\\
+~\\
+$\langle Z+|X+\rangle\approx$ 1/√2 \\
+$\langle Z+|X+\rangle\approx$ 1/√2
 \end{onlyenv}
 
 \begin{onlyenv}<4>
-\vspace*{-0.4cm}
+~\\
+~\\
+\vspace*{-0.1cm}
 \begin{center}
 \includegraphics[width=1.0\textwidth]{
   slides/assets/Zp+Zm.png
 } \\
+~\\
 \includegraphics[width=0.7\textwidth]{
   slides/assets/ZpXp.png
 }

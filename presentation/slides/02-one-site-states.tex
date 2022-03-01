@@ -11,40 +11,43 @@
 
 
 
+
+
+
   \end{lstlisting}
 \end{onlyenv}
 
 \begin{onlyenv}<2->
-
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
 Zp = state("Z+", i)
 Zm = state("Z-", i)
 Xp = state("X+", i)
 Xm = state("X-", i)
 \end{lstlisting}
-
 \end{onlyenv}
 
 \end{column}
 
-\begin{column}{4.5cm}
+\begin{column}{5cm}
 
 \begin{onlyenv}<1->
-``S=1/2'' defines an \\
-operator basis \\[\baselineskip]
-
+(dim=2|id=25|"S=1/2") \\
+~\\
+``S=1/2'' defines an operator basis \\
+~\\
 Additionally:\\
 ``Qubit'', ``Qudit'',\\
 ``Electron'', $\dots$
 \end{onlyenv}
 
 \begin{onlyenv}<2->
-\vspace*{0.6cm}
-\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
+\vspace*{0.2cm}
+~\\
+\begin{lstlisting}[language=JuliaLocal, mathescape, style=julia, basicstyle=\small]
 ITensor([1 0], i)
 ITensor([0 1], i)
-(Zp + Zm)/√2
-(Zp - Zm)/√2
+ITensor([1 1]/√2, i)
+ITensor([1 -1]/√2, i)
 \end{lstlisting}
 \end{onlyenv}
 
