@@ -22,12 +22,12 @@ $\theta$ = minimize(E, $\partial$E, $\theta_0$;
 \end{lstlisting}
 \end{onlyenv}
 
-\begin{onlyenv}<3->
+\begin{onlyenv}<2->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-maxlinkdim($\psi_0$)
-maxlinkdim($\psi_\theta$)
-E($\theta_0$), norm($\partial$E($\theta_0$))
-E($\theta$), norm($\partial$E($\theta$))
+maxlinkdim($\psi_0$) = 1
+maxlinkdim($\psi_\theta$) = 3
+E($\theta_0$) == -29
+E($\theta$) == -31.017062
 \end{lstlisting}
 \end{onlyenv}
 
@@ -35,45 +35,26 @@ E($\theta$), norm($\partial$E($\theta$))
 
 \begin{column}{4.5cm}
 
-\begin{onlyenv}<1-1>
-|0$\rangle$ = |Z+Z+…Z+$\rangle$ \\
-~\\
-Minimize over $\theta$: \\
-|$\theta\rangle$ = U($\theta$)|0$\rangle$ \\
-E($\theta$) = $\langle\theta$|H|$\theta\rangle$ \\
-~\\
-~\\
-~\\
-~\\
-~\\
-\end{onlyenv}
+%% \begin{onlyenv}<1-1>
+%% |0$\rangle$ = |Z+Z+…Z+$\rangle$ \\
+%% ~\\
+%% Minimize over $\theta$: \\
+%% |$\theta\rangle$ = U($\theta$)|0$\rangle$ \\
+%% E($\theta$) = $\langle\theta$|H|$\theta\rangle$ \\
+%% ~\\
+%% ~\\
+%% ~\\
+%% ~\\
+%% ~\\
+%% \end{onlyenv}
 
-\begin{onlyenv}<2->
+\begin{onlyenv}<1->
 \vspace*{0.0cm}
 \begin{center}
 \includegraphics[width=\textwidth]{
   slides/assets/U_Zpn.png
-}
-\end{center}
-\vspace*{0.0cm}
-\end{onlyenv}
-
-\begin{onlyenv}<3-3>
+} \\
 ~\\
-~\\
-~\\
-~\\
-1 (product state) \\
-2 (entangled state) \\
-(-29, 5.773335) \\
-(-31.017062, 0.000759)
-\end{onlyenv}
-
-\begin{onlyenv}<4->
-\vspace*{0.0cm}
-~\\
-~\\
-\begin{center}
 \includegraphics[width=1.0\textwidth]{
   slides/assets/thetan_H_thetan.png
 } \\
@@ -83,6 +64,32 @@ E($\theta$) = $\langle\theta$|H|$\theta\rangle$ \\
 \end{center}
 \vspace*{0.0cm}
 \end{onlyenv}
+
+%% \begin{onlyenv}<3-3>
+%% ~\\
+%% ~\\
+%% ~\\
+%% ~\\
+%% 1 (product state) \\
+%% 2 (entangled state) \\
+%% (-29, 5.773335) \\
+%% (-31.017062, 0.000759)
+%% \end{onlyenv}
+
+%% \begin{onlyenv}<4->
+%% \vspace*{0.0cm}
+%% ~\\
+%% ~\\
+%% \begin{center}
+%% \includegraphics[width=1.0\textwidth]{
+%%   slides/assets/thetan_H_thetan.png
+%% } \\
+%% \includegraphics[width=0.7\textwidth]{
+%%   slides/assets/min_grad_E_theta.png
+%% }
+%% \end{center}
+%% \vspace*{0.0cm}
+%% \end{onlyenv}
 
 \end{column}
 

@@ -15,11 +15,10 @@ CX_layer(i) = [op("CX", i[j], i[j+1]) for j in 1:2:(n-1)]
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
 function U($\theta$, i; nlayers)
   n = length(i)
-  U$_\theta$ = Ry_layer($\theta$[1:n], i)
   for l in 1:(nlayers - 1)
     $\theta_l$ = $\theta$[(1:n) .+ l * n]
-    U$_\theta$ = [U$_\theta$; CX_layer(i)]
     U$_\theta$ = [U$_\theta$; Ry_layer($\theta_l$, i)]
+    U$_\theta$ = [U$_\theta$; CX_layer(i)]
   end
   return U$_\theta$
 end

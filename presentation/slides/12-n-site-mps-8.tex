@@ -19,12 +19,17 @@ $\theta$ = minimize(F, $\partial$F, $\theta_0$;
 \end{lstlisting}
 \end{onlyenv}
 
-\begin{onlyenv}<3->
+%% # 1 (product state)
+%% # 2 (entangled state)
+%% # (-0.556066, 0.895717)
+%% # (-0.995230, 0.048939)
+
+\begin{onlyenv}<2->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-maxlinkdim($\psi_0$)
-maxlinkdim($\psi_\theta$)
-F($\theta_0$), norm($\partial$F($\theta_0$))
-F($\theta$), norm($\partial$F($\theta$))
+maxlinkdim($\psi_0$) == 1
+maxlinkdim($\psi_\theta$) == 2
+F($\theta_0$) == -0.556066
+F($\theta$) == -0.995230
 \end{lstlisting}
 \end{onlyenv}
 
@@ -32,25 +37,29 @@ F($\theta$), norm($\partial$F($\theta$))
 
 \begin{column}{4.5cm}
 
-\begin{onlyenv}<1-1>
+%% \begin{onlyenv}<1-1>
+%% 
+%% \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+%% # |0$\rangle$ = |Z+Z+…Z+$\rangle$
+%% 
+%% # Minimize over $\theta$:
+%% # F($\theta$) = -|$\langle\psi$|U($\theta$)|0$\rangle$|$^2$
+%% #        = -|$\langle\psi$|$\theta\rangle$|$\^2$
+%% 
+%% 
+%% 
+%% 
+%%  \end{lstlisting}
+%% 
+%% \end{onlyenv}
 
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# |0$\rangle$ = |Z+Z+…Z+$\rangle$
-
-# Minimize over $\theta$:
-# F($\theta$) = -|$\langle\psi$|U($\theta$)|0$\rangle$|$^2$
-#        = -|$\langle\psi$|$\theta\rangle$|$\^2$
-
-
-
-
- \end{lstlisting}
-
-\end{onlyenv}
-
-\begin{onlyenv}<2->
+\begin{onlyenv}<1->
 \vspace*{0.0cm}
 \begin{center}
+\includegraphics[width=\textwidth]{
+  slides/assets/U_Zpn.png
+} \\
+~\\
 \includegraphics[width=\textwidth]{
   slides/assets/psin_thetan.png
 } \\
@@ -61,16 +70,14 @@ F($\theta$), norm($\partial$F($\theta$))
 \vspace*{0.0cm}
 \end{onlyenv}
 
-\begin{onlyenv}<3->
-
-\begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
-# 1 (product state)
-# 2 (entangled state)
-# (-0.556066, 0.895717)
-# (-0.995230, 0.048939)
-\end{lstlisting}
-
-\end{onlyenv}
+%% \begin{onlyenv}<3->
+%% \begin{lstlisting}[style=julia, numbers=none, mathescape, basicstyle=\small]
+%% # 1 (product state)
+%% # 2 (entangled state)
+%% # (-0.556066, 0.895717)
+%% # (-0.995230, 0.048939)
+%% \end{lstlisting}
+%% \end{onlyenv}
 
 \end{column}
 
