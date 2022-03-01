@@ -16,16 +16,17 @@ function ising(n; h)
   end
   return H
 end
+
+h = 0.5
+H = MPO(ising(n; h=h), i)
+maxlinkdim(H) == 3
 \end{lstlisting}
 \end{onlyenv}
 
 \begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-h = 0.5
-H = MPO(ising(n; h=h), i)
-maxlinkdim(H)
 Zp = MPS(i, "Z+")
-inner(Zp', H, Zp)
+inner(Zp', H, Zp) == -(n-1)
  \end{lstlisting}
 \end{onlyenv}
 
@@ -59,18 +60,17 @@ $H = -\sum_j^{n-1} Z_j Z_{j+1} + h \sum_j^n X_j$ \\
 \vspace*{0.0cm}
 \end{onlyenv}
 
-\begin{onlyenv}<3-3>
-~\\
-~\\
-= 3 (local Hamiltonian) \\
-~\\
-$\langle$Z+Z+…Z+|H|Z+Z+…Z+$\rangle$ \\
-  $\approx$ -(n - 1) = -29
-\end{onlyenv}
+%% \begin{onlyenv}<3-3>
+%% ~\\
+%% ~\\
+%% = 3 (local Hamiltonian) \\
+%% ~\\
+%% $\langle$Z+Z+…Z+|H|Z+Z+…Z+$\rangle$ \\
+%%   $\approx$ -(n - 1) = -29
+%% \end{onlyenv}
 
-\begin{onlyenv}<4->
+\begin{onlyenv}<3->
 \vspace*{0.0cm}
-~\\
 ~\\
 ~\\
 \begin{center}

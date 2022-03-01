@@ -1,0 +1,3 @@
+Finish simplifying:
+slides/12-n-site-mps-6.tex
+slides/12-n-site-mps-7.tex

@@ -8,12 +8,12 @@
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
   n = 30
   i = [Index(2, "S=1/2")
-        for j in 1:n]
+                  for j in 1:n]
 
+  
   Zp = MPS(i, "Z+")
-  Zm = MPS(i, "Z-")
 
-  maxlinkdim(Zp)
+  maxlinkdim(Zp) == 1 # product state
 \end{lstlisting}
 \end{onlyenv}
 
@@ -22,13 +22,14 @@
 \begin{column}{5.5cm}
 
 \begin{onlyenv}<1-1>
+\vspace*{-0.1cm}
 $n$-site state \\
 ~\\
 ~\\
-$|Z+Z+\dots Z+\rangle$ \\
-$|Z-Z-\dots Z-\rangle$ \\
 ~\\
-1 (product state)
+$|Z+Z+\dots Z+\rangle$ \\
+~\\
+~\\
 \end{onlyenv}
 
 \begin{onlyenv}<2->
@@ -37,11 +38,8 @@ $|Z-Z-\dots Z-\rangle$ \\
 \includegraphics[width=0.15\textwidth]{
   slides/assets/in.png
 } \\
-\includegraphics[width=0.45\textwidth]{
+\includegraphics[width=0.5\textwidth]{
   slides/assets/Zpn.png
-} \ \ 
-\includegraphics[width=0.45\textwidth]{
-  slides/assets/Zmn.png
 }
 \end{center}
 \vspace*{0.0cm}

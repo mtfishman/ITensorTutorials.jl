@@ -9,17 +9,17 @@
 $\psi$ = (Zp + Zm)/√2
 
 
-maxlinkdim($\psi$)
+maxlinkdim($\psi$) == 2 # entangled state
 \end{lstlisting}
 \end{onlyenv}
 
 \begin{onlyenv}<3->
 ~\\
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-  inner(Zp, Zp)
-  inner(Zm, Zp)
-  norm($\psi$)
-  inner(Zp, $\psi$)
+  inner(Zp, Zp) == 1
+
+
+  inner(Zp, $\psi$) == 1/√2
 \end{lstlisting}
 \end{onlyenv}
 
@@ -31,7 +31,7 @@ maxlinkdim($\psi$)
 $(|Z+Z+\dots Z+\rangle +$ \\
 \  $|Z-Z-\dots Z-\rangle)/\sqrt{2}$ \\
 ~\\
-2 (entangled state)
+~\\
 \end{onlyenv}
 
 \begin{onlyenv}<2->
@@ -46,14 +46,16 @@ $(|Z+Z+\dots Z+\rangle +$ \\
 \end{onlyenv}
 
 \begin{onlyenv}<3-3>
-$\langle Z+|Z+\rangle \approx 1$ \\
-$\langle Z-|Z+\rangle \approx 0$ \\
-$||\psi\rangle| \approx 1$ \\
-$\langle Z+|\psi\rangle \approx 1/\sqrt{2}$ \\
+~\\
+$\langle Z+|Z+\rangle = 1$ \\
+~\\ % $\langle Z-|Z+\rangle \approx 0$ \\
+~\\ % $||\psi\rangle| \approx 1$ \\
+$\langle Z+|\psi\rangle = 1/\sqrt{2}$ \\
 \end{onlyenv}
 
 \begin{onlyenv}<4->
 \vspace*{0.0cm}
+~\\
 \begin{center}
 \includegraphics[width=0.44\textwidth]{
   slides/assets/Zpn_Zpn.png

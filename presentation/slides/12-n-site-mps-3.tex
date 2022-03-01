@@ -13,32 +13,31 @@
 
 
   state = [k == j ? "Z-" : "Z+"
-             for k in 1:n]
+                           for k in 1:n]
   X$_j$Zp = MPS(i, state)
 \end{lstlisting}
 \end{onlyenv}
 
 \begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-  maxlinkdim(X$_j$Zp)
-  inner(Zp, X$_j$Zp)
-  inner(X$_j$Zp, apply(X$_j$, Zp))
+  maxlinkdim(X$_j$Zp) == 1
+  inner(Zp, X$_j$Zp) == 0
 \end{lstlisting}
 \end{onlyenv}
 
 \end{column}
 
-\begin{column}{4cm}
+\begin{column}{4.5cm}
 
 \begin{onlyenv}<1-1>
-$j = n/2$ \\
-$X_j$ \\
+~\\
+~\\
 ~\\
 $X_j|Z+Z+\dots Z+\rangle =$ \\
 $|Z+Z+\dots Z-\dots Z+\rangle$ \\
 ~\\
-$|Z+Z+\dots Z-\dots Z+\rangle$ \\
 ~\\
+$|Z+Z+\dots Z-\dots Z+\rangle$ \\
 ~\\
 \end{onlyenv}
 
@@ -55,9 +54,9 @@ $|Z+Z+\dots Z-\dots Z+\rangle$ \\
 \begin{onlyenv}<3->
 ~\\
 ~\\
-1 (product state) \\
-$\approx$ 0 \\
-$\approx$ 1
+~\\
+~\\
+~\\
 \end{onlyenv}
 
 \end{column}

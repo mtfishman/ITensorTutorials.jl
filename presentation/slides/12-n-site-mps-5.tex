@@ -18,14 +18,14 @@ E$_{dmrg}$, $\psi_{dmrg}$ = dmrg(H, $\psi_0$;
 \end{lstlisting}
 \end{onlyenv}
 
-\begin{onlyenv}<3->
+\begin{onlyenv}<2->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-maxlinkdim($\psi_0$)
-maxlinkdim($\psi$)
-maxlinkdim($\psi_{dmrg}$)
-E($\psi_0$), norm($\partial$($\psi_0$))
-E($\psi$), norm($\partial$E($\psi$))
-E($\psi_{dmrg}$), norm($\partial$E($\psi_{dmrg}$))
+maxlinkdim($\psi_0$) == 1
+maxlinkdim($\psi$) == 3
+maxlinkdim($\psi_{dmrg}$) == 3
+E($\psi_0$) == -29
+E($\psi$) == -31.0317917
+E($\psi_{dmrg}$) == -31.0356110
 \end{lstlisting}
 \end{onlyenv}
 
@@ -33,19 +33,19 @@ E($\psi_{dmrg}$), norm($\partial$E($\psi_{dmrg}$))
 
 \begin{column}{5.5cm}
 
-\begin{onlyenv}<1-1>
-|0$\rangle$ = |Z+Z+…Z+$\rangle$ \\
-~\\
-Minimize over $\psi$: \\
-$\langle\psi$|H|$\psi\rangle$/$\langle\psi$|$\psi\rangle$ \\
-~\\
-~\\
-DMRG solves: \\
-H|$\psi\rangle$ $\approx$ |$\psi\rangle$ \\
-~\\
-\end{onlyenv}
+%% \begin{onlyenv}<1-1>
+%% |0$\rangle$ = |Z+Z+…Z+$\rangle$ \\
+%% ~\\
+%% Minimize over $\psi$: \\
+%% $\langle\psi$|H|$\psi\rangle$/$\langle\psi$|$\psi\rangle$ \\
+%% ~\\
+%% ~\\
+%% DMRG solves: \\
+%% H|$\psi\rangle$ $\approx$ |$\psi\rangle$ \\
+%% ~\\
+%% \end{onlyenv}
 
-\begin{onlyenv}<2->
+\begin{onlyenv}<1->
 \vspace*{0.0cm}
 \begin{center}
 \includegraphics[width=0.8\textwidth]{
@@ -58,14 +58,14 @@ H|$\psi\rangle$ $\approx$ |$\psi\rangle$ \\
 \vspace*{0.0cm}
 \end{onlyenv}
 
-\begin{onlyenv}<3->
-= 1 (product state) \\
-= 3 (entangled state) \\
-= 2 (entangled state) \\
-$\approx$ (-29, 5.4772256) \\
-$\approx$ (-31.0317917, 0.06673780) \\
-$\approx$ (-31.0356110, 0.02413237)
-\end{onlyenv}
+%% \begin{onlyenv}<3->
+%% = 1 (product state) \\
+%% = 3 (entangled state) \\
+%% = 2 (entangled state) \\
+%% $\approx$ (-29, 5.4772256) \\
+%% $\approx$ (-31.0317917, 0.06673780) \\
+%% $\approx$ (-31.0356110, 0.02413237)
+%% \end{onlyenv}
 
 \end{column}
 
