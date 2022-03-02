@@ -20,18 +20,18 @@ U($\theta$, i1, i2) = [
 \end{onlyenv}
 
 \begin{onlyenv}<2->
-\begin{lstlisting}[language=JuliaLocal, style=julia, numbers=none, mathescape, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
 # PastaQ notation:
-u($\theta$, j1, j2) = [
-  ("Ry", j1, (; $\theta$=$\theta$[1])),
-  ("Ry", j2, (; $\theta$=$\theta$[2])),
-  ("CNOT", j1, j2),
-  ("Ry", j1, (; $\theta$=$\theta$[3])),
-  ("Ry", j2, (; $\theta$=$\theta$[4])),
+u($\theta$) = [
+  ("Ry", 1, (; $\theta$=$\theta$[1])),
+  ("Ry", 2, (; $\theta$=$\theta$[2])),
+  ("CNOT", 1, 2),
+  ("Ry", 1, (; $\theta$=$\theta$[3])),
+  ("Ry", 2, (; $\theta$=$\theta$[4])),
 ]
 
 U($\theta$, i1, i2) =
-  buildcircuit(u($\theta$, 1, 2), [i1, i2])
+  buildcircuit(u($\theta$), [i1, i2])
 \end{lstlisting}
 \end{onlyenv}
 

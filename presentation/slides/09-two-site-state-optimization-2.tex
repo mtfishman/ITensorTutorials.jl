@@ -23,8 +23,8 @@ norm($\partial$E($\psi_0$)) == 2
 $\psi$ = minimize(E, $\partial$E, $\psi_0$;
        nsteps=10, $\gamma$=0.1)
 
-E($\psi_0$), norm($\partial$E($\psi_0$))
-E($\psi$), norm($\partial$E($\psi$))
+E($\psi_0$) == -1
+E($\psi$) == -1.4142131 $\approx$ -√2
  \end{lstlisting}
 \end{onlyenv}
 
@@ -61,9 +61,9 @@ E($\psi$), norm($\partial$E($\psi$))
 $\min_{\psi} E(\psi) =$ \\
 \ \ \ \ \ $\min_{\psi} \langle\psi|H|\psi\rangle/\langle\psi|\psi\rangle$ \\
 ~\\
-(-1, 2) \\
-(-1.4142131, 0.0010865277) \\
-\ \ \ \ \ \ $\approx$ (-√2, 0)
+~\\ %(-1, 2) \\
+~\\ %(-1.4142131, 0.0010865277) \\
+~\\ %\ \ \ \ \ $\approx$ (-√2, 0)
 \end{onlyenv}
 
 %% \begin{onlyenv}<3->

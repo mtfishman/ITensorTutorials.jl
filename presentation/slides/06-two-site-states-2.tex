@@ -17,14 +17,14 @@ $\psi$ = (Zp1 * Zm2 +
 
 \begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-inner(ZpZm, $\psi$)
+inner(ZpZm, $\psi$) == 1/√2
 
 
 U, S, V = svd(ZmZp, i1)
-s = diag(S)
+diag(S) == [1, 0]
 
 U, S, V = svd($\psi$, i1)
-s = diag(S)
+diag(S) == [1/√2, 1/√2]
 \end{lstlisting}
 \end{onlyenv}
 
@@ -50,19 +50,19 @@ From single-site states \\
 \vspace*{0.0cm}
 \end{onlyenv}
 
-\begin{onlyenv}<3-3>
-~\\
-$\approx$ 1 \\
-$\approx$ 1/√2 \\
-~\\
-~\\
-$\approx$ [1, 0] \\
-~\\
-~\\
-$\approx$ [1/√2, 1/√2]
-\end{onlyenv}
+%% \begin{onlyenv}<3-3>
+%% ~\\
+%% $\approx$ 1 \\
+%% $\approx$ 1/√2 \\
+%% ~\\
+%% ~\\
+%% $\approx$ [1, 0] \\
+%% ~\\
+%% ~\\
+%% $\approx$ [1/√2, 1/√2]
+%% \end{onlyenv}
 
-\begin{onlyenv}<4->
+\begin{onlyenv}<3->
 \vspace*{0.0cm}
 \begin{center}
 \includegraphics[width=0.7\textwidth]{
@@ -71,8 +71,7 @@ $\approx$ [1/√2, 1/√2]
 \end{center}
 \end{onlyenv}
 
-\begin{onlyenv}<5->
-~\\
+\begin{onlyenv}<4->
 \begin{center}
 \includegraphics[width=0.7\textwidth]{
   slides/assets/svd_cat12.png

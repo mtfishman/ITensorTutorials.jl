@@ -4,18 +4,17 @@
 
 \begin{column}{5cm}
 
-\begin{onlyenv}<1->
+\begin{onlyenv}<1-2>
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-ZpZp = Zp1 * Zp2
+inner(Zp' * Zp', H, Zp * Zp)
 
-inner(ZpZp', H, ZpZp)
 \end{lstlisting}
 \end{onlyenv}
 
 \begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
 D, U = eigen(H)
-diag(D)
+diag(D) == [-√2, -1, 1, √2]
 \end{lstlisting}
 \end{onlyenv}
 
@@ -26,10 +25,10 @@ diag(D)
 \begin{onlyenv}<1-1>
 ~\\
 ~\\
-$\langle$H$\rangle$ = $\langle$Z+Z+|H|Z+Z+$\rangle$ \\
+$\langle$Z+Z+|H|Z+Z+$\rangle$ \\
 \end{onlyenv}
 
-\begin{onlyenv}<2-3>
+\begin{onlyenv}<2-2>
 \vspace*{0.0cm}
 \begin{center}
 \includegraphics[width=1.0\textwidth]{
@@ -39,12 +38,12 @@ $\langle$H$\rangle$ = $\langle$Z+Z+|H|Z+Z+$\rangle$ \\
 \vspace*{0.0cm}
 \end{onlyenv}
 
-\begin{onlyenv}<3-3>
-~\\
-$\approx$ [-√2, -1, 1, √2]
-\end{onlyenv}
+%% \begin{onlyenv}<3-3>
+%% ~\\
+%% $\approx$ [-√2, -1, 1, √2]
+%% \end{onlyenv}
 
-\begin{onlyenv}<4->
+\begin{onlyenv}<3->
 \vspace*{0.0cm}
 \begin{center}
 \includegraphics[width=1.0\textwidth]{
