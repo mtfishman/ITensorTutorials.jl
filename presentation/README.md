@@ -1,6 +1,8 @@
 # ITensor and PastaQ tutorial presentation
 
-You can build a PDF of the presentation with:
+This directory has the source code for a presentation about circuit evolution and optimization with [ITensors.jl](https://github.com/ITensor/ITensors.jl/) and [PastaQ.jl](https://github.com/GTorlai/PastaQ.jl/). The PDF of the presentation can be found [here](presentation.pdf).
+
+You can build your won PDF of the presentation by cloning the repository, entering [this](.) directory, and compiling the PDF with:
 ```
 $ lualatex presentation
 ```
