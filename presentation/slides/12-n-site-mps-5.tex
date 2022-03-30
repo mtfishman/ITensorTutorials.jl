@@ -6,6 +6,16 @@
 
 \begin{onlyenv}<1->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+function E($\psi$)
+  $\psi$H$\psi$ = inner($\psi$', H, $\psi$)
+  $\psi$$\psi$ = inner($\psi$, $\psi$)
+  return $\psi$H$\psi$ / $\psi$$\psi$
+end
+\end{lstlisting}
+\end{onlyenv}
+
+\begin{onlyenv}<2->
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
 $\psi_0$ = MPS(i, "Z+")
 
 $\psi$ = minimize(E, $\partial$E, $\psi_0$;
@@ -15,17 +25,6 @@ $\psi$ = minimize(E, $\partial$E, $\psi_0$;
 E$_{dmrg}$, $\psi_{dmrg}$ = dmrg(H, $\psi_0$;
       nsweeps=10,
       maxdim=10, cutoff=1e-5)
-\end{lstlisting}
-\end{onlyenv}
-
-\begin{onlyenv}<2->
-\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-maxlinkdim($\psi_0$) == 1
-maxlinkdim($\psi$) == 3
-maxlinkdim($\psi_{dmrg}$) == 3
-E($\psi_0$) == -29
-E($\psi$) == -31.0317917
-E($\psi_{dmrg}$) == -31.0356110
 \end{lstlisting}
 \end{onlyenv}
 
@@ -56,6 +55,19 @@ E($\psi_{dmrg}$) == -31.0356110
 }
 \end{center}
 \vspace*{0.0cm}
+\end{onlyenv}
+
+\begin{onlyenv}<3->
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+maxlinkdim($\psi_0$) == 1
+maxlinkdim($\psi$) == 3
+maxlinkdim($\psi_{dmrg}$) == 3
+E($\psi_0$) == -29
+E($\psi$) == -31.0317917
+E($\psi_{dmrg}$) == -31.0356110
+\end{lstlisting}
+~\\
+~\\
 \end{onlyenv}
 
 %% \begin{onlyenv}<3->
