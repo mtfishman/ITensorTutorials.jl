@@ -6,15 +6,15 @@
 
 \begin{onlyenv}<1->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-CH = op("CRy", i1, i2; $\theta$=$\pi$/2)
+CRy = op("CRy", i1, i2; $\theta$=$\pi$/2)
 \end{lstlisting}
 \end{onlyenv}
 
 \begin{onlyenv}<3->
 ~\\
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-apply(CH, Zp1 * Zp2) ==
-      Zp1 * Xp2
+apply(CRy, Zm1 * Zp2) ==
+      Zm1 * Xp2
 \end{lstlisting}
 \end{onlyenv}
 
@@ -23,15 +23,15 @@ apply(CH, Zp1 * Zp2) ==
 \begin{column}{4.5cm}
 
 \begin{onlyenv}<1-1>
-Controlled-Hadamard gate \\
-CH = CRy($\theta$=$\pi$/2)
+Controlled-rotation gate \\
+CRy($\pi$/2)
 \end{onlyenv}
 
 \begin{onlyenv}<2->
 \vspace*{0.0cm}
 \begin{center}
-\includegraphics[width=1.0\textwidth]{
-  slides/assets/CH12.png
+\includegraphics[width=0.5\textwidth]{
+  slides/assets/CRy_pi_by_2.png
 }
 \end{center}
 \vspace*{0.0cm}
@@ -43,8 +43,8 @@ CH = CRy($\theta$=$\pi$/2)
 
 \begin{onlyenv}<3-3>
 ~\\
-CH|Z+Z+$\rangle$ = |Z+X+$\rangle$ \\
-~\\
+CRy($\pi$/2)|Z-Z+$\rangle$ =\\
+\ \ \ \ |Z-X+$\rangle$ \\
 ~\\
 \end{onlyenv}
 
@@ -52,7 +52,7 @@ CH|Z+Z+$\rangle$ = |Z+X+$\rangle$ \\
 \vspace*{0.0cm}
 \begin{center}
 \includegraphics[width=1.0\textwidth]{
-  slides/assets/CHZp1Zp2_to_Zp1Xp2.png
+  slides/assets/CRyZm1Zp2_to_Zm1Xp2.png
 }
 \end{center}
 \vspace*{0.0cm}
