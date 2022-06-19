@@ -7,7 +7,7 @@
 \begin{onlyenv}<1->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 $\psi$0 = (Zp1 * Zp2 +
-      Zm1 * Zn2)/√2
+      Zm1 * Zm2)/√2
 
 E($\psi$0) == -1
 
@@ -21,10 +21,10 @@ norm($\partial$E($\psi$0)) == 2
 \begin{onlyenv}<2->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 $\psi$ = minimize(E, $\partial$E, $\psi$0;
-       nsteps=10, $\gamma$=0.1)
+           nsteps=10, $\gamma$=0.1)
 
 E($\psi$0) == -1
-E($\psi$) == -1.4142131 $\approx$ -√2
+E($\psi$) # $\approx$ -1.4142131 $\approx$ -√2
  \end{lstlisting}
 \end{onlyenv}
 

@@ -17,7 +17,7 @@ end
 \begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 function minimize(f, $\partial$f, x;
-  nsteps, $\gamma$)
+                  nsteps, $\gamma$)
   for n in 1:nsteps
     x = x - $\gamma$ * $\partial$f(x)
   end
