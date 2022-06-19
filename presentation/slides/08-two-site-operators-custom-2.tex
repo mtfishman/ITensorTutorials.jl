@@ -13,7 +13,12 @@ CRy = op("CRy", i1, i2; $\theta$=$\pi$/2)
 \begin{onlyenv}<3->
 ~\\
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
-apply(CRy, Zm1 * Zp2) ==
+Xp1=state("Xp",i1)
+Xm1=state("Xm",i1)
+Xp2=state("Xp",i2)
+Xm2=state("Xm",i2)
+
+apply(CRy, Zm1 * Zp2) $\approx$
       Zm1 * Xp2
 \end{lstlisting}
 \end{onlyenv}
