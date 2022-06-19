@@ -17,9 +17,8 @@ function ising(n; h)
   return H
 end
 
-n = 10 # system size
 h = 0.5 # field
-H = MPO(ising(n; h=h), i)
+H = MPO(ising(n; h), i)
 maxlinkdim(H) == 3
 \end{lstlisting}
 \end{onlyenv}
