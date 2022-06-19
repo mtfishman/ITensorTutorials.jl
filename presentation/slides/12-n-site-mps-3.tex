@@ -7,21 +7,21 @@
 \begin{onlyenv}<1->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
   j = n ÷ 2
-  X$_j$ = op("X", i[j])
+  Xj = op("X", i[j])
 
-  X$_j$Zp = apply(X$_j$, Zp)
+  XjZp = apply(Xj, Zp)
 
 
   state = [k == j ? "Zm" : "Zp"
-                           for k in 1:n]
-  X$_j$Zp = MPS(i, state)
+           for k in 1:n]
+  XjZp = MPS(i, state)
 \end{lstlisting}
 \end{onlyenv}
 
 \begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
-  maxlinkdim(X$_j$Zp) == 1
-  inner(Zp, X$_j$Zp) == 0
+  maxlinkdim(XjZp) == 1
+  inner(Zp, XjZp) == 0
 \end{lstlisting}
 \end{onlyenv}
 

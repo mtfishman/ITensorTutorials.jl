@@ -9,17 +9,18 @@
 $\psi$ = (Zp + Zm)/√2
 
 
-maxlinkdim($\psi$) == 2 # entangled state
+maxlinkdim($\psi$) == 2
+  # entangled state
 \end{lstlisting}
 \end{onlyenv}
 
 \begin{onlyenv}<3->
 ~\\
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
-  inner(Zp, Zp) == 1
+  inner(Zp, Zp) $\approx$ 1
 
 
-  inner(Zp, $\psi$) == 1/√2
+  inner(Zp, $\psi$) $\approx$ 1/√2
 \end{lstlisting}
 \end{onlyenv}
 

@@ -7,7 +7,7 @@
 \begin{onlyenv}<1-1>
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 # Circuit as a vector of gates:
-U($\theta$, i1, i2) = [
+U($\theta$,i1,i2) = [
   op("Ry",i1;$\theta$=$\theta$[1]),
   op("Ry",i2;$\theta$=$\theta$[2]),
   op("CX",i1,i2),
@@ -29,7 +29,7 @@ u($\theta$) = [
   ("Ry",2,(;$\theta$=$\theta$[4]))]
 
 U($\theta$,i1,i2) =
- buildcircuit(u($\theta$),[i1,i2])
+ buildcircuit([i1,i2],u($\theta$))
 \end{lstlisting}
 \end{onlyenv}
 

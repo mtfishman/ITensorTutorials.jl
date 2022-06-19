@@ -20,6 +20,8 @@ function minimize(f, $\partial$f, x;
                   nsteps, $\gamma$)
   for n in 1:nsteps
     x = x - $\gamma$ * $\partial$f(x)
+    println("Step = $\$$(n),
+          f(x) = $\$$(f(x))")
   end
   return x
 end

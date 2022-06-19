@@ -12,22 +12,22 @@
 $\psi$0 = MPS(i, "Zp")
 nlayers = 6
 function E($\theta$)
-  $\psi_\theta$ = apply(U($\theta$, i; nlayers), $\psi$0)
-  return inner($\psi_\theta$', H, $\psi_\theta$)
+  $\psi\theta$=apply(U($\theta$,i;nlayers),$\psi$0)
+  return inner($\psi\theta$',H,$\psi\theta$)
 end
 
-$\theta_0$ = zeros(nlayers * n)
+$\theta$0 = zeros(nlayers*n)
 $\theta$ = minimize(E, $\partial$E, $\theta_0$;
-      nsteps=20, $\gamma$=0.1)
+          nsteps=20, $\gamma$=0.1)
 \end{lstlisting}
 \end{onlyenv}
 
 \begin{onlyenv}<2->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 maxlinkdim($\psi$0) = 1
-maxlinkdim($\psi_\theta$) = 3
-E($\theta_0$) == -29
-E($\theta$) == -31.017062
+maxlinkdim($\psi\theta$) = 3
+E($\theta$0) # $\approx$ -29
+E($\theta$) # $\approx$ -31.017062
 \end{lstlisting}
 \end{onlyenv}
 

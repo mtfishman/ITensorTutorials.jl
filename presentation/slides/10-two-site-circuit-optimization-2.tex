@@ -10,21 +10,21 @@ $\psi$0 = Zp1 * Zp2
 
 
 function E($\theta$)
-  $\psi_\theta$ = apply(U($\theta$, i1, i2), $\psi$0)
-  return inner($\psi_\theta$', H, $\psi_\theta$)
+  $\psi\theta$ = apply(U($\theta$,i1,i2),$\psi$0)
+  return inner($\psi\theta$',H,$\psi\theta$)
 end
 \end{lstlisting}
 \end{onlyenv}
 
 \begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
-$\theta_0$ = [0, 0, 0, 0]
+$\theta$0 = [0, 0, 0, 0]
 $\partial$E($\theta$) = gradient(E, $\theta$)[1]
-$\theta$ = minimize(E, $\partial$E, $\theta_0$;
-        nsteps=40, $\gamma$=0.5)
+$\theta$ = minimize(E, $\partial$E, $\theta$0;
+           nsteps=40, $\gamma$=0.5)
 
-E($\theta_0$) == -1
-E($\theta$) == -1.4142077 $\approx$ -√2
+E($\theta$0) == -1
+E($\theta$) # $\approx$ -1.4142077 $\approx$ -√2
 \end{lstlisting}
 \end{onlyenv}
 

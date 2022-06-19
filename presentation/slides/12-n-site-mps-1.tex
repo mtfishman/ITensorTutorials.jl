@@ -8,12 +8,14 @@
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
   n = 30
   i = [Index(2, "S=1/2")
-                  for j in 1:n]
+       for j in 1:n];
 
   
-  Zp = MPS(i, "Zp")
+  Zp = MPS(i, "Zp");
+  Zm = MPS(i, "Zm");
 
-  maxlinkdim(Zp) == 1 # product state
+  maxlinkdim(Zp) == 1
+    # product state
 \end{lstlisting}
 \end{onlyenv}
 

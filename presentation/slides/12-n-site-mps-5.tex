@@ -8,8 +8,8 @@
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 function E($\psi$)
   $\psi$H$\psi$ = inner($\psi$', H, $\psi$)
-  $\psi$$\psi$ = inner($\psi$, $\psi$)
-  return $\psi$H$\psi$ / $\psi$$\psi$
+  $\psi\psi$ = inner($\psi$, $\psi$)
+  return $\psi$H$\psi$ / $\psi\psi$
 end
 \end{lstlisting}
 \end{onlyenv}
@@ -18,13 +18,12 @@ end
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 $\psi$0 = MPS(i, "Zp")
 
-$\psi$ = minimize(E, $\partial$E, $\psi$0;
-      nsteps=50, $\gamma$=0.1,
-      maxdim=10, cutoff=1e-5)
+$\psi$ = minimize(E,$\partial$E,$\psi$0;
+      nsteps=50,$\gamma$=0.1,
+      maxdim=10,cutoff=1e-5)
 
-E$_{dmrg}$, $\psi_{dmrg}$ = dmrg(H, $\psi$0;
-      nsweeps=10,
-      maxdim=10, cutoff=1e-5)
+Edmrg,$\psi$dmrg = dmrg(H,$\psi$0;
+  nsweeps=10,maxdim=10,cutoff=1e-5)
 \end{lstlisting}
 \end{onlyenv}
 
@@ -61,10 +60,10 @@ E$_{dmrg}$, $\psi_{dmrg}$ = dmrg(H, $\psi$0;
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 maxlinkdim($\psi$0) == 1
 maxlinkdim($\psi$) == 3
-maxlinkdim($\psi_{dmrg}$) == 3
-E($\psi$0) == -29
-E($\psi$) == -31.0317917
-E($\psi_{dmrg}$) == -31.0356110
+maxlinkdim($\psi$dmrg) == 3
+E($\psi$0) # $\approx$ -29
+E($\psi$) # $\approx$ -31.0317917
+E($\psi$dmrg) # $\approx$ -31.0356110
 \end{lstlisting}
 ~\\
 ~\\
