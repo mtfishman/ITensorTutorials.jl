@@ -9,16 +9,16 @@
 %% $\psi_\theta$ = apply(U($\theta$, i; nlayers=nlayers), $\psi$0;
 %%            maxdim=maxdim, cutoff=cutoff)
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
-$\psi$0 = MPS(i, "Zp")
+$\psi$0 = MPS(i, "Zp");
 nlayers = 6
 function E($\theta$)
   $\psi\theta$=apply(U($\theta$,i;nlayers),$\psi$0)
   return inner($\psi\theta$',H,$\psi\theta$)
 end
 
-$\theta$0 = zeros(nlayers*n)
-$\theta$ = minimize(E, $\partial$E, $\theta_0$;
-          nsteps=20, $\gamma$=0.1)
+$\theta$0 = zeros(nlayers*n);
+$\theta$ = minimize(E, $\partial$E, $\theta$0;
+          nsteps=20, $\gamma$=0.1);
 \end{lstlisting}
 \end{onlyenv}
 

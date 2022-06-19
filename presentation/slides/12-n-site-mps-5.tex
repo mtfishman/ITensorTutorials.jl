@@ -4,7 +4,7 @@
 
 \begin{column}{5cm}
 
-\begin{onlyenv}<1->
+\begin{onlyenv}<1-1>
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 function E($\psi$)
   $\psi$H$\psi$ = inner($\psi$', H, $\psi$)
@@ -16,14 +16,28 @@ end
 
 \begin{onlyenv}<2->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
-$\psi$0 = MPS(i, "Zp")
+function minimize(f, $\partial$f, x;
+                  nsteps,$\gamma$,
+                  cutoff)
+  for n in 1:nsteps
+    x=-(x,$\gamma$*$\partial$f(x);cutoff)
+    println("Step = $\$$(n),
+          f(x) = $\$$(f(x))")
+  end
+  return x
+end
+\end{lstlisting}
+\end{onlyenv}
 
-$\psi$ = minimize(E,$\partial$E,$\psi$0;
+\begin{onlyenv}<2->
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
+$\psi$0 = MPS(i, "Zp");
+$\psi$ = minimize(E, $\partial$E, $\psi$0;
       nsteps=50,$\gamma$=0.1,
-      maxdim=10,cutoff=1e-5)
+      cutoff=1e-5);
 
-Edmrg,$\psi$dmrg = dmrg(H,$\psi$0;
-  nsweeps=10,maxdim=10,cutoff=1e-5)
+Edmrg, $\psi$dmrg = dmrg(H, $\psi$0;
+  nsweeps=10,cutoff=1e-5);
 \end{lstlisting}
 \end{onlyenv}
 

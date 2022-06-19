@@ -18,14 +18,14 @@ function ising(n; h)
 end
 
 h = 0.5 # field
-H = MPO(ising(n; h), i)
+H = MPO(ising(n; h), i);
 maxlinkdim(H) == 3
 \end{lstlisting}
 \end{onlyenv}
 
 \begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
-Zp = MPS(i, "Zp")
+Zp = MPS(i, "Zp");
 inner(Zp', H, Zp) $\approx$ -(n-1)
  \end{lstlisting}
 \end{onlyenv}

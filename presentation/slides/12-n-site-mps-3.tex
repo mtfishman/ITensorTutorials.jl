@@ -9,12 +9,12 @@
   j = n ÷ 2
   Xj = op("X", i[j])
 
-  XjZp = apply(Xj, Zp)
+  XjZp = apply(Xj, Zp);
 
 
-  state = [k == j ? "Zm" : "Zp"
-           for k in 1:n]
-  XjZp = MPS(i, state)
+  st = [k == j ? "Zm" : "Zp"
+        for k in 1:n];
+  XjZp = MPS(i, st);
 \end{lstlisting}
 \end{onlyenv}
 

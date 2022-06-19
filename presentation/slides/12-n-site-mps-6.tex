@@ -15,6 +15,7 @@ CX_layer(i) = [op("CX", i[j], i[j+1]) for j in 1:2:(n-1)]
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 function U($\theta$, i; nlayers)
   n = length(i)
+  U$\theta$ = ITensor[]
   for l in 1:(nlayers-1)
     $\theta$l=$\theta$[(1:n) .+ l*n]
     U$\theta$=[U$\theta$;Ry_layer($\theta$l,i)]
