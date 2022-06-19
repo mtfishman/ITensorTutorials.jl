@@ -5,7 +5,7 @@
 \begin{column}{5cm}
 
 \begin{onlyenv}<1->
-\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 function E($\psi$)
   $\psi$H$\psi$ = inner($\psi$', H, $\psi$)
   $\psi$$\psi$ = inner($\psi$, $\psi$)
@@ -15,7 +15,7 @@ end
 \end{onlyenv}
 
 \begin{onlyenv}<3->
-\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 function minimize(f, $\partial$f, x;
   nsteps, $\gamma$)
   for n in 1:nsteps

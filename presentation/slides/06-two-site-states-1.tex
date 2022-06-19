@@ -6,9 +6,9 @@
 
 \begin{onlyenv}<1->
 %\vspace*{-0.2cm}
-\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
-i1 = Index(2, "S=1/2")
-i2 = Index(2, "S=1/2")
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
+i1 = Index(2, "S=1/2,i1")
+i2 = Index(2, "S=1/2,i2")
 
 i1 $\neq$ i2
 
@@ -18,7 +18,7 @@ ZpZm[i1=>1, i2=>2] = 1
 \end{onlyenv}
 
 \begin{onlyenv}<3->
-\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\scriptsize\ttfamily]
 Zp1 = state("Z+", i1)
 Zp2 = state("Z+", i2)
 

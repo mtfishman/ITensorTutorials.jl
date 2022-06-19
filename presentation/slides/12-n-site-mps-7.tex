@@ -8,7 +8,7 @@
 %% Definition of $\psi_\theta$, not enough space to include in slide.
 %% $\psi_\theta$ = apply(U($\theta$, i; nlayers=nlayers), $\psi_0$;
 %%            maxdim=maxdim, cutoff=cutoff)
-\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 $\psi_0$ = MPS(i, "Z+")
 nlayers = 6
 function E($\theta$)
@@ -23,7 +23,7 @@ $\theta$ = minimize(E, $\partial$E, $\theta_0$;
 \end{onlyenv}
 
 \begin{onlyenv}<2->
-\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 maxlinkdim($\psi_0$) = 1
 maxlinkdim($\psi_\theta$) = 3
 E($\theta_0$) == -29

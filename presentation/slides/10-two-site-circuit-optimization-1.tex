@@ -5,7 +5,7 @@
 \begin{column}{5cm}
 
 \begin{onlyenv}<1-1>
-\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 # Circuit as a vector of gates:
 U($\theta$, i1, i2) = [
   op("Ry", i1; $\theta$=$\theta$[1]),
@@ -20,7 +20,7 @@ U($\theta$, i1, i2) = [
 \end{onlyenv}
 
 \begin{onlyenv}<2->
-\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 # PastaQ notation:
 u($\theta$) = [
   ("Ry", 1, (; $\theta$=$\theta$[1])),

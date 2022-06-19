@@ -5,7 +5,7 @@
 \begin{column}{4.5cm}
 
 \begin{onlyenv}<1->
-\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\scriptsize\ttfamily]
 H = ITensor(i1', i2', i1, i2)
 H[i1'=>2, i2'=>1,
    i1=>2, i2=>1] = -1
@@ -14,11 +14,13 @@ H[i1'=>2, i2'=>1,
 \end{onlyenv}
 
 \begin{onlyenv}<2->
-\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\scriptsize\ttfamily]
 Id1 = op("Id", i1)
 Z1 = op("Z", i1)
 X1 = op("X", i1)
-# …
+Id2 = op("Id", i2)
+Z2 = op("Z", i2)
+X2 = op("X", i2)
 
 ZZ = Z1 * Z2
 XI = X1 * Id2

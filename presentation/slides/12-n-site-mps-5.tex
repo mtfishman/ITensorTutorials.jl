@@ -5,7 +5,7 @@
 \begin{column}{5cm}
 
 \begin{onlyenv}<1->
-\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 function E($\psi$)
   $\psi$H$\psi$ = inner($\psi$', H, $\psi$)
   $\psi$$\psi$ = inner($\psi$, $\psi$)
@@ -15,7 +15,7 @@ end
 \end{onlyenv}
 
 \begin{onlyenv}<2->
-\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 $\psi_0$ = MPS(i, "Z+")
 
 $\psi$ = minimize(E, $\partial$E, $\psi_0$;
@@ -58,7 +58,7 @@ E$_{dmrg}$, $\psi_{dmrg}$ = dmrg(H, $\psi_0$;
 \end{onlyenv}
 
 \begin{onlyenv}<3->
-\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 maxlinkdim($\psi_0$) == 1
 maxlinkdim($\psi$) == 3
 maxlinkdim($\psi_{dmrg}$) == 3

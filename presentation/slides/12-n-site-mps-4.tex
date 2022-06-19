@@ -5,7 +5,7 @@
 \begin{column}{5cm}
 
 \begin{onlyenv}<1->
-\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 function ising(n; h)
   H = OpSum()
   for j in 1:(n - 1)
@@ -24,7 +24,7 @@ maxlinkdim(H) == 3
 \end{onlyenv}
 
 \begin{onlyenv}<3->
-\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 Zp = MPS(i, "Z+")
 inner(Zp', H, Zp) == -(n-1)
  \end{lstlisting}

@@ -5,14 +5,14 @@
 \begin{column}{5cm}
 
 \begin{onlyenv}<1-2>
-\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-inner(Zp' * Zp', H, Zp * Zp)
+\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\scriptsize\ttfamily]
+inner(Zp1' * Zp2', H, Zp1 * Zp2)
 
 \end{lstlisting}
 \end{onlyenv}
 
 \begin{onlyenv}<3->
-\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\scriptsize\ttfamily]
 D, U = eigen(H)
 diag(D) == [-√2, -1, 1, √2]
 \end{lstlisting}

@@ -5,7 +5,7 @@
 \begin{column}{5cm}
 
 \begin{onlyenv}<1->
-\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 $\psi_0$ = (Zp1 * Zm2 +
          Zm1 * Zp2)/√2
 
@@ -19,7 +19,7 @@ norm($\partial$E($\psi_0$)) == 2
 \end{onlyenv}
 
 \begin{onlyenv}<2->
-\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 $\psi$ = minimize(E, $\partial$E, $\psi_0$;
        nsteps=10, $\gamma$=0.1)
 

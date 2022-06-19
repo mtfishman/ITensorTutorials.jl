@@ -5,7 +5,8 @@
 \begin{column}{4.5cm}
 
 \begin{onlyenv}<1->
-\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
+\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\scriptsize\ttfamily]
+i = Index(2, "S=1/2")
 Z = ITensor(i', i)
 Z[i'=>1, i=>1] = 1
 Z[i'=>2, i=>2] = -1
@@ -13,11 +14,11 @@ Z[i'=>2, i=>2] = -1
 \end{onlyenv}
 
 \begin{onlyenv}<3->
-\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\small]
-z = [
-  1 0
-  0 -1
-]
+\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\scriptsize\ttfamily]
+z = [1 0; 0 -1]
+
+
+
 Z = ITensor(z, i', i)
 
 
