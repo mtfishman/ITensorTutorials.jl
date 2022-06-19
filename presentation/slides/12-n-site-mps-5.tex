@@ -18,9 +18,9 @@ end
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 function minimize(f, $\partial$f, x;
                   nsteps,$\gamma$,
-                  cutoff)
+                  kwargs...)
   for n in 1:nsteps
-    x=-(x,$\gamma$*$\partial$f(x);cutoff)
+    x=-(x,$\gamma$*$\partial$f(x);kwargs...)
     println("Step = $\$$(n),
           f(x) = $\$$(f(x))")
   end
@@ -35,6 +35,7 @@ $\psi$0 = MPS(i, "Zp");
 $\psi$ = minimize(E, $\partial$E, $\psi$0;
       nsteps=50,$\gamma$=0.1,
       cutoff=1e-5);
+$\psi$ /= norm($\psi$);
 
 Edmrg, $\psi$dmrg = dmrg(H, $\psi$0;
   nsweeps=10,cutoff=1e-5);
