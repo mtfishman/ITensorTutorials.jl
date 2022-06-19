@@ -20,10 +20,10 @@ $\psi$ = (Zp1 * Zm2 +
 inner(ZpZm, $\psi$) == 1/√2
 
 
-U, S, V = svd(ZpZm, i1);
+_, S, _ = svd(ZpZm, i1);
 diag(S) == [1, 0]
 
-U, S, V = svd($\psi$, i1);
+_, S, _ = svd($\psi$, i1);
 diag(S) == [1/√2, 1/√2]
 \end{lstlisting}
 \end{onlyenv}
