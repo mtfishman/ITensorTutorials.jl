@@ -11,10 +11,9 @@ import ITensors: state
 
 
 function state(
-  ::StateName"iX-",
-  ::SiteType"S=1/2"
-)
-  return [im -im]/√2
+  ::StateName"iXm",
+  ::SiteType"S=1/2")
+  return [im,-im]/√2
 end
 \end{lstlisting}
 
@@ -22,7 +21,7 @@ end
 
 \begin{onlyenv}<2->
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\scriptsize\ttfamily]
-iXm = state("iX-", i)
+iXm = state("iXm", i)
 
 
 inner(Zm, iXm)
