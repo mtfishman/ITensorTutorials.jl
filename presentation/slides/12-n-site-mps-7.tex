@@ -15,6 +15,7 @@ function E($\theta$)
   $\psi\theta$ = apply(U($\theta$,i;nlayers),$\psi$0)
   return inner($\psi\theta$',H,$\psi\theta$)
 end
+$\partial$E($\theta$) = gradient(E, $\theta$)[1]
 
 $\theta$0 = zeros(nlayers*n);
 $\theta$ = minimize(E, $\partial$E, $\theta$0;

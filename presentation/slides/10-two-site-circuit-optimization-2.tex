@@ -13,13 +13,13 @@ function E($\theta$)
   $\psi\theta$ = apply(U($\theta$,i1,i2),$\psi$0)
   return inner($\psi\theta$',H,$\psi\theta$)
 end
+$\partial$E($\theta$) = gradient(E, $\theta$)[1]
 \end{lstlisting}
 \end{onlyenv}
 
 \begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 $\theta$0 = [0, 0, 0, 0]
-$\partial$E($\theta$) = gradient(E, $\theta$)[1]
 $\theta$ = minimize(E, $\partial$E, $\theta$0;
            nsteps=40, $\gamma$=0.5)
 

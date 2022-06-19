@@ -6,8 +6,8 @@
 
 \begin{onlyenv}<1->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
-$\psi$0 = Zp1 * Zp2
-$\psi$ = (Zp1 * Zp2 + Zm1 * Zm2) / √2
+$\psi$0 = Zp1*Zp2
+$\psi$ = (Zp1*Zp2 + Zm1*Zm2)/√2
 
 
 
@@ -15,17 +15,17 @@ function F($\theta$)
   $\psi\theta$ = apply(U($\theta$,i1,i2),$\psi$0)
   return -abs2(inner($\psi$,$\psi\theta$))
 end
+$\partial$F($\theta$) = gradient(F, $\theta$)[1]
 \end{lstlisting}
 \end{onlyenv}
 
 \begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
 $\theta$0 = [0, 0, 0, 0]
-$\partial$F($\theta$) = gradient(F, $\theta$)[1]
 $\theta$ = minimize(F, $\partial$F, $\theta$0;
           nsteps=50, $\gamma$=0.1)
 
-F($\theta_0$) == -0.5
+F($\theta$0) == -0.5
 F($\theta$) # $\approx$ -0.9938992 $\approx$ -1
 \end{lstlisting}
 \end{onlyenv}

@@ -13,7 +13,7 @@ inner(Zp1' * Zp2', H,
 
 \begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
-D, U = eigen(H);
+D, _ = eigen(H);
 diag(D) $\approx$ [-√2, -1, 1, √2]
 \end{lstlisting}
 \end{onlyenv}

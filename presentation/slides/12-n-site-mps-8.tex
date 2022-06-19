@@ -12,9 +12,9 @@ function F($\theta$)
   $\psi\theta$=apply(U($\theta$,i;nlayers),$\psi$0)
   return -abs2(inner($\psi$,$\psi\theta$))
 end
+$\partial$F($\theta$) = gradient(F, $\theta$)[1]
 
 $\theta$0 = zeros(nlayers*n);
-$\partial$F($\theta$) = gradient(F, $\theta$)[1]
 $\theta$ = minimize(F, $\partial$F, $\theta$0;
             nsteps=20, $\gamma$=0.1);
 \end{lstlisting}
