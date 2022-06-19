@@ -12,7 +12,7 @@
   X$_j$Zp = apply(X$_j$, Zp)
 
 
-  state = [k == j ? "Z-" : "Z+"
+  state = [k == j ? "Zm" : "Zp"
                            for k in 1:n]
   X$_j$Zp = MPS(i, state)
 \end{lstlisting}

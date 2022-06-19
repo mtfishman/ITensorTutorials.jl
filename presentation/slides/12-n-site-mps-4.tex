@@ -17,7 +17,8 @@ function ising(n; h)
   return H
 end
 
-h = 0.5
+n = 10 # system size
+h = 0.5 # field
 H = MPO(ising(n; h=h), i)
 maxlinkdim(H) == 3
 \end{lstlisting}
@@ -25,7 +26,7 @@ maxlinkdim(H) == 3
 
 \begin{onlyenv}<3->
 \begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
-Zp = MPS(i, "Z+")
+Zp = MPS(i, "Zp")
 inner(Zp', H, Zp) == -(n-1)
  \end{lstlisting}
 \end{onlyenv}
