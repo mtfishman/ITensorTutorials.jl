@@ -6,9 +6,10 @@
 
 \begin{onlyenv}<1->
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\scriptsize\ttfamily]
-H = ITensor(i1', i2', i1, i2)
+H = ITensor(i1', i2',
+            i1, i2)
 H[i1'=>2, i2'=>1,
-   i1=>2, i2=>1] = -1
+  i1=>2, i2=>1] = -1
 # …
 \end{lstlisting}
 \end{onlyenv}

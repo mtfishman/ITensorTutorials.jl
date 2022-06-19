@@ -11,7 +11,7 @@ $\psi$[i1=>1, i2=>2] = 1/√2
 $\psi$[i1=>2, i2=>1] = 1/√2
 
 $\psi$ = (Zp1 * Zm2 +
-        Zm1 * Zp2)/√2
+     Zm1 * Zp2)/√2
 \end{lstlisting}
 \end{onlyenv}
 
@@ -20,10 +20,10 @@ $\psi$ = (Zp1 * Zm2 +
 inner(ZpZm, $\psi$) == 1/√2
 
 
-U, S, V = svd(ZmZp, i1)
+U, S, V = svd(ZpZm, i1);
 diag(S) == [1, 0]
 
-U, S, V = svd($\psi$, i1)
+U, S, V = svd($\psi$, i1);
 diag(S) == [1/√2, 1/√2]
 \end{lstlisting}
 \end{onlyenv}

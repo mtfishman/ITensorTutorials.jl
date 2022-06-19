@@ -6,15 +6,15 @@
 
 \begin{onlyenv}<1-2>
 \begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\scriptsize\ttfamily]
-inner(Zp1' * Zp2', H, Zp1 * Zp2)
-
+inner(Zp1' * Zp2', H,
+      Zp1 * Zp2)
 \end{lstlisting}
 \end{onlyenv}
 
 \begin{onlyenv}<3->
-\begin{lstlisting}[language=JuliaLocal, style=julia, basicstyle=\scriptsize\ttfamily]
-D, U = eigen(H)
-diag(D) == [-√2, -1, 1, √2]
+\begin{lstlisting}[language=JuliaLocal, style=julia, mathescape, basicstyle=\scriptsize\ttfamily]
+D, U = eigen(H);
+diag(D) $\approx$ [-√2, -1, 1, √2]
 \end{lstlisting}
 \end{onlyenv}
 
