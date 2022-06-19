@@ -1,7 +1,3 @@
-# TODO: Add this to ITensors.jl.
-# This helps with matrix multiplications.
-Base.zero(psi::MPS) = 0 * psi
-
 subtract(x, y; kwargs...) = -(x, y; kwargs...)
 subtract(x::Vector, y::Vector; kwargs...) = [subtract(x[i], y[i]; kwargs...) for i in 1:length(x)]
 

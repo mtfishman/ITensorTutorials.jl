@@ -1,22 +1,10 @@
 using ITensors
+using UnicodePlots
 using Zygote
 
 include("ising_model.jl")
 include("minimize.jl")
-
-# Take a set of MPS eigenvectors {|psi_i>} and solve
-# the generalized eigenvector equation:
-#
-# <psi_i|H|psi_j><psi_j|v> = lambda_i * <psi_j|v>
-#
-function orthogonalize_eigenvectors(H::MPO, psis::Vector{MPS})
-  psis = normalize.(psis)
-  Heff = [inner(psi_i', H, psi_j) for psi_i in psis, psi_j in psis]
-  N = [inner(psi_i, psi_j) for psi_i in psis, psi_j in psis]
-  D, V = eigen(Heff, N)
-  phis = transpose(V) * psis
-  return normalize.(phis)
-end
+include("orthogonalize_eigenvectors.jl")
 
 # Define the sites of the Hilbert space
 n = 10
@@ -43,7 +31,14 @@ psi0 /= norm(psi0);
 
 @show E(psi_init), E(psi0)
 
-w = 2.0 # Weight
+#
+# Write a cost function the minimizes the energy
+# as well as the overlap between states. For example:
+#
+# c = <psi_1|H|psi_1> + <psi_2|H|psi_2> + ... + 
+#     |<psi_1|psi_2>|^2 + |<psi_1|H|psi_3>|^2 + ...
+#
+# Make sure to normalize!
 function cost_function(psis::Vector{MPS})
   nstates = length(psis)
   N = [inner(psis[i], psis[j]) for i in 1:nstates, j in 1:nstates]
@@ -59,17 +54,23 @@ function cost_function(psis::Vector{MPS})
       off_diagonal_overlap += abs2(N[i, j]) / (N[i, i] * N[j, j])
     end
   end
-  return energy + w * off_diagonal_overlap
+  return energy + off_diagonal_overlap
 end
 grad_cost_function(psi) = gradient(cost_function, psi)[1]
 
 nstates = 3
 psis_init = [randomMPS(i; linkdims=2) for _ in 1:nstates]
 psis = minimize(cost_function, grad_cost_function, psis_init; nsteps=50, gamma=0.1, cutoff=1e-5, maxdim=10);
-psis ./= norm(psis);
+psis = normalize.(psis);
 
 @show E.(psis)
 
+# Plot <Sz> and <Sx> for our eigenvectors
+for i in 1:nstates
+  plt = lineplot(expect(psis[i], "Sz"); title="Ising model state $i from gradient descent before orthogonalization", name="Sz", xlim=[1,10], ylim=[-0.5,0.5])
+  lineplot!(plt, expect(psis[i], "Sx"); name="Sx")
+  display(plt)
+end
 # Construct an effective Hamiltonian `Heff` for the states we found
 Heff = [inner(psis[i]', H, psis[j]) for i in 1:nstates, j in 1:nstates]
 
@@ -82,19 +83,31 @@ display(Heff)
 println("\nN = <psi_i|psi_j> from DMRG")
 display(N)
 
-# Solve the generilized eigenvector equation
-# Heff * V[:, i] = D[i] * N * V[:, i]
-D, V = eigen(Heff, N)
+#
+# Orthogonalize the eigenvectors by solving the generalized eigenvector
+# equations:
+#
+# <psi_i|H|psi_j><psi_j|v> = lambda_i * <psi_j|v>
+#
+# See `orthogonalize_eigenvectors.jl` for details.
+#
+psis = orthogonalize_eigenvectors(H, psis)
 
-println("\nEigenvalues of the reduced Hamiltonian")
-display(D)
-
-# Orthogonalized MPS in the new basis
-psis = transpose(V) * psis
-psis = normalize.(psis)
-
+# Replot <Sz> and <Sx> for our eigenvectors
 for i in 1:nstates
-  plt = lineplot(expect(psis[i], "Sz"); title="Ising model state $i from gradient descient after orthogonalization", name="Sz", xlim=[1,10], ylim=[-0.5,0.5])
+  plt = lineplot(expect(psis[i], "Sz"); title="Ising model state $i from gradient descent after orthogonalization", name="Sz", xlim=[1,10], ylim=[-0.5,0.5])
   lineplot!(plt, expect(psis[i], "Sx"); name="Sx")
   display(plt)
 end
+
+# Construct an effective Hamiltonian `Heff` for the states we found
+Heff = [inner(psis[i]', H, psis[j]) for i in 1:nstates, j in 1:nstates]
+
+# Construct the overlap matrix `N` for the states we found
+N = [inner(psis[i], psis[j]) for i in 1:nstates, j in 1:nstates]
+
+println("\nHeff = <psi_i|H|psi_j> from DMRG")
+display(Heff)
+
+println("\nN = <psi_i|psi_j> from DMRG")
+display(N)
